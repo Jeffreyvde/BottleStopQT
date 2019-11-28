@@ -33,5 +33,9 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
+INCLUDEPATH += /opt/qt5pi/sysroot/usr/include
+LIBS += -L/opt/qt5pi/sysroot/usr/lib -lwiringPi
+DEFINES += WIRING_PI
+
 target.path = /home/pi
 INSTALLS += target
