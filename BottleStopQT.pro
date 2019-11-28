@@ -32,3 +32,6 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui
+
+target.path = /home/pi
+INSTALLS += target
