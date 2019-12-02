@@ -24,10 +24,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
+        beverage.cpp \
+        fillorder.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
+        beverage.h \
+        fillorder.h \
         mainwindow.h
 
 FORMS += \
