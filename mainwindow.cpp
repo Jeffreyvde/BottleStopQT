@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    Pump waterPump("Water Pomp", 0, 0, 0);
+    Pump waterPump("Water Pump", 0, 0, 0);
     Pump sirupPump1("Sirup Pump 1", 0, 0, 0);
     Pump waterPump2("Sirup Pump 2", 0, 0, 0);
 }
