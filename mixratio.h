@@ -4,10 +4,13 @@
 #include <QMainWindow>
 #include <QObject>
 
+
 class MixRatio
 {
 public:
-    MixRatio();
+    MixRatio(QString pumpName, double ratio);
+    double ratio;
+//    Pump* pump
 };
 
 #endif // MIXRATIO_H

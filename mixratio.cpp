@@ -1,6 +1,7 @@
 #include "mixratio.h"
 
-MixRatio::MixRatio()
+MixRatio::MixRatio(QString pumpName, double ratio)
 {
+    this->ratio = ratio;
 
 }

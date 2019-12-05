@@ -13,22 +13,15 @@
 #include <QApplication>
 #include "mixratio.h"
 
-class Beverage//: public QObject
+class Beverage
 {
-
-//Q_OBJECT
-//    QJsonDocument * json;
-
-
 public:
-    Beverage(QString id, QString name);
-    QString id;
+    Beverage(QJsonObject beverageData);
+    QJsonObject beverageData;
+    int id;
     QString name;
-    float costPerML;
-    int size;
+    double costPerML;
     std::vector<MixRatio> ratios;
-
-
 };
 
 #endif // BEVERAGE_H
