@@ -6,6 +6,7 @@
 #include <softPwm.h>
 #include <QObject>
 
+//Define the variables, methods and libraries of the Pump class.
 class Pump : public QObject
 {
     Q_OBJECT
@@ -16,25 +17,26 @@ public:
     ~Pump();
 
 public:
-    QString name;
+    QString name;   //Name of the pump.
 
-    int PWM;
+    int PWM;        //PWM for the pumps.
 
     void pumpAmount(int amountInML);
     void activate();
-    void deactivate();
     void setPWM(int PWM);
 
+public slots:
+    void deactivate();
+
 private:
-    int powerPin;
-    int PWMPin;
-    int flowrate;
+    int powerPin;   //Powerpin of the pump.
+    int PWMPin;     //PWM pin of the pump.
+    int flowrate;   //Flowrate in ML/minute.
 
     const int maxPWM = 100;
 
     float calculateFlowrate();
     float calculateActivationTimeForAmount(int amountInML);
-
 };
 
 #endif // PUMP_H

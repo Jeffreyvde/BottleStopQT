@@ -7,13 +7,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    Pump waterPump("Water Pump", 0, 0, 0);
-    Pump sirupPump1("Sirup Pump 1", 0, 0, 0);
-    Pump waterPump2("Sirup Pump 2", 0, 0, 0);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+

@@ -10,6 +10,7 @@ Pump::Pump(QString name, int powerPin, int PWMPin, int flowrate, QObject *parent
     pinMode(powerPin, OUTPUT);
 
     this->PWMPin = PWMPin;
+    pinMode(PWMPin, OUTPUT);
     softPwmCreate(PWMPin, 0, maxPWM);
 
     this->flowrate = flowrate;
@@ -22,9 +23,10 @@ void Pump::pumpAmount(int amountInML)
     calculateFlowrate();
     activate();
 
+    //Sets the calculated time to miliseconds.
     int multiplierToMilliseconds = 60 * 1000;
 
-    //Call  deactivate after time
+    //Call deactivate after the time which is needed to fill is over.
     float delay = calculateActivationTimeForAmount(amountInML) * multiplierToMilliseconds;
     QTimer::singleShot(delay, this, SLOT(deactivate()));
 }
@@ -45,8 +47,13 @@ void Pump::deactivate()
 //Sets a specific PWM to adjust the flowrate.
 void Pump::setPWM(int PWM)
 {
+    if(PWM < 0)
+        this->PWM = 0;
+    else if(PWM > maxPWM)
+        this->PWM = maxPWM;
+
     this->PWM = PWM;
-    softPwmWrite(PWMPin, PWM);
+    softPwmWrite(PWMPin, this->PWM);
 }
 
 //Calculates the activation time based on amount and pump flowrate.
