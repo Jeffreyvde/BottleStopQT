@@ -1,6 +1,7 @@
 #ifndef DEVICEMANAGER_H
 #define DEVICEMANAGER_H
 
+#include "serialwrapper.h"
 
 class DeviceManager
 {
@@ -11,8 +12,18 @@ public:
             return instance;
         }
 
+public:
+
+
+
 private:
-       DeviceManager() {}
+       DeviceManager();
+
+       //pumps: std::map<string, Pump>;
+       //beverages std::map<string, Beverage>;
+       SerialWrapper* serialPort;
+
+
 
 public:
        DeviceManager(DeviceManager const&) = delete;
