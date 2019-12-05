@@ -6,6 +6,7 @@
 #include <softPwm.h>
 #include <QObject>
 
+//Define the variables, methods and libraries of the Pump class.
 class Pump : public QObject
 {
     Q_OBJECT

@@ -4,15 +4,18 @@
 //Constructor and destructor for the Pump class. Initializes the variables.
 Pump::Pump(QString name, int powerPin, int PWMPin, int flowrate, QObject *parent) : QObject(parent)
 {
+    //Name of the pump.
     this->name = name;
 
+    //Powerpin of the pump
     this->powerPin = powerPin;
     pinMode(powerPin, OUTPUT);
 
+    //Pwm pin of the pump.
     this->PWMPin = PWMPin;
     softPwmCreate(PWMPin, 0, maxPWM);
 
-    //Flowrate in ML/minute
+    //Flowrate in ML/minute.
     this->flowrate = flowrate;
 }
 Pump::~Pump(){}
@@ -23,9 +26,10 @@ void Pump::pumpAmount(int amountInML)
     calculateFlowrate();
     activate();
 
+    //Sets the calculated time to miliseconds.
     int multiplierToMilliseconds = 60 * 1000;
 
-    //Call  deactivate after time
+    //Call deactivate after the time which is needed to fill is over.
     float delay = calculateActivationTimeForAmount(amountInML) * multiplierToMilliseconds;
     QTimer::singleShot(delay, this, SLOT(deactivate()));
 }
