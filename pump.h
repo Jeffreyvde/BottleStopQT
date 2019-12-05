@@ -20,6 +20,7 @@ public:
     QString name;   //Name of the pump.
 
     int PWM;        //PWM for the pumps.
+    bool isActive;  //Pump active status.
 
     void pumpAmount(int amountInML);
     void activate();
