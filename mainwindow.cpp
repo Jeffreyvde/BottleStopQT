@@ -8,13 +8,17 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    //Instances of the pump class
-    Pump waterPump("Water Pump", 0, 0, 0);
-    Pump sirupPump1("Sirup Pump 1", 0, 0, 0);
-    Pump waterPump2("Sirup Pump 2", 0, 0, 0);
+    //Instances of the pump class with parameters (name, powerPin, PWMPin, flowrate).
+    waterPump = new Pump("Water Pump", 0, 0, 0);
+    waterPump->setPWM(100);
+    sirupPump1 = new Pump("Sirup Pump 1", 0, 0, 0);
+    sirupPump1->setPWM(100);
+    sirupPump2 = new Pump("Sirup Pump 2", 0, 0, 0);
+    sirupPump2->setPWM(100);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+

@@ -23,8 +23,10 @@ public:
 
     void pumpAmount(int amountInML);
     void activate();
-    void deactivate();
     void setPWM(int PWM);
+
+public slots:
+    void deactivate();
 
 private:
     int powerPin;
@@ -35,7 +37,6 @@ private:
 
     float calculateFlowrate();
     float calculateActivationTimeForAmount(int amountInML);
-
 };
 
 #endif // PUMP_H

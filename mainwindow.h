@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "pump.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +18,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    Pump* waterPump;
+    Pump* sirupPump1;
+    Pump* sirupPump2;
 };
 
 #endif // MAINWINDOW_H

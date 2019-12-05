@@ -7,12 +7,13 @@ Pump::Pump(QString name, int powerPin, int PWMPin, int flowrate, QObject *parent
     //Name of the pump.
     this->name = name;
 
-    //Powerpin of the pump
+    //Powerpin of the pump.
     this->powerPin = powerPin;
     pinMode(powerPin, OUTPUT);
 
-    //Pwm pin of the pump.
+    //PWM pin of the pump.
     this->PWMPin = PWMPin;
+    pinMode(PWMPin, OUTPUT);
     softPwmCreate(PWMPin, 0, maxPWM);
 
     //Flowrate in ML/minute.
@@ -50,8 +51,13 @@ void Pump::deactivate()
 //Sets a specific PWM to adjust the flowrate.
 void Pump::setPWM(int PWM)
 {
+    if(PWM < 0)
+        this->PWM = 0;
+    else if(PWM > maxPWM)
+        this->PWM = maxPWM;
+
     this->PWM = PWM;
-    softPwmWrite(PWMPin, PWM);
+    softPwmWrite(PWMPin, this->PWM);
 }
 
 //Calculates the activation time based on amount and pump flowrate.
