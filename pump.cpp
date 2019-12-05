@@ -20,8 +20,6 @@ Pump::~Pump(){}
 //Pumps the specific amount which is given.
 void Pump::pumpAmount(int amountInML)
 {
-
-
     calculateFlowrate();
     activate();
 
@@ -36,8 +34,6 @@ void Pump::pumpAmount(int amountInML)
 //Acitvates and controls the Pump by setting its pin to HIGH, and its PWM value.
 void Pump::activate()
 {
-    isActive = true;
-
     digitalWrite(powerPin, HIGH);
     pwmWrite(PWMPin, PWM);
 }
@@ -45,7 +41,6 @@ void Pump::activate()
 //Deactivates the Pump by setting its pin to LOW.
 void Pump::deactivate()
 {
-    isActive = false;
     digitalWrite(powerPin, LOW);
 }
 
