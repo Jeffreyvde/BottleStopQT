@@ -6,9 +6,11 @@
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkReply>
 #include <QJsonDocument>
-#include <QObject>
+#include <QJsonDocument>
+#include <QJsonValue>
+#include <QJsonArray>
+#include <QJsonObject>
 #include <QApplication>
-//#include <QtDebug>
 #include "mixratio.h"
 
 class Beverage//: public QObject

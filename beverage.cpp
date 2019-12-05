@@ -20,10 +20,20 @@ Beverage::Beverage(QString id, QString name)
     }
 
     QByteArray response_data = reply->readAll();
-    QJsonDocument json = QJsonDocument::fromJson(response_data);
+    QJsonDocument data = QJsonDocument::fromJson(response_data);
+    QJsonObject json_obj = data.object();
+    QJsonArray recipe = json_obj["recipe"].toArray();
+
+//    QVariantMap obj_map = json_obj.toVariantMap();
+//    QVariantList recipe_list = obj_map["recipe"].toList();
+
+
+
     reply->deleteLater();
 
-    qDebug() << json;
+    qDebug() << recipe[0].toObject()["Name"];
+
+
 
     this->id = id;
     this->name = name;
