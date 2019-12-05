@@ -4,19 +4,15 @@
 //Constructor and destructor for the Pump class. Initializes the variables.
 Pump::Pump(QString name, int powerPin, int PWMPin, int flowrate, QObject *parent) : QObject(parent)
 {
-    //Name of the pump.
     this->name = name;
 
-    //Powerpin of the pump.
     this->powerPin = powerPin;
     pinMode(powerPin, OUTPUT);
 
-    //PWM pin of the pump.
     this->PWMPin = PWMPin;
     pinMode(PWMPin, OUTPUT);
     softPwmCreate(PWMPin, 0, maxPWM);
 
-    //Flowrate in ML/minute.
     this->flowrate = flowrate;
 }
 Pump::~Pump(){}

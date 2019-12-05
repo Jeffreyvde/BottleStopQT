@@ -18,9 +18,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    Pump* waterPump;
-    Pump* sirupPump1;
-    Pump* sirupPump2;
 };
 
 #endif // MAINWINDOW_H

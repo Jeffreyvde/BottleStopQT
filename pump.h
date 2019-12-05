@@ -17,9 +17,9 @@ public:
     ~Pump();
 
 public:
-    QString name;
+    QString name;   //Name of the pump.
 
-    int PWM;
+    int PWM;        //PWM for the pumps.
 
     void pumpAmount(int amountInML);
     void activate();
@@ -29,9 +29,9 @@ public slots:
     void deactivate();
 
 private:
-    int powerPin;
-    int PWMPin;
-    int flowrate;
+    int powerPin;   //Powerpin of the pump.
+    int PWMPin;     //PWM pin of the pump.
+    int flowrate;   //Flowrate in ML/minute.
 
     const int maxPWM = 100;
 
