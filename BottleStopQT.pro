@@ -4,8 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
-
+QT += core gui
+QT += core
+QT += network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = BottleStopQT
@@ -25,14 +26,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         beverage.cpp \
-        fillorder.cpp \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        mixratio.cpp
 
 HEADERS += \
         beverage.h \
-        fillorder.h \
-        mainwindow.h
+        mainwindow.h \
+        mixratio.h
 
 FORMS += \
         mainwindow.ui
