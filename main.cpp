@@ -1,17 +1,17 @@
-#include <QCoreApplication>
-#include <iostream>
+#include <QApplication>
 #include <QtSerialPort/QSerialPort>
-#include <QDebug>
-#include <QElapsedTimer>
+#include "mainwindow.h"
 #include "serialwrapper.h"
 
+QSerialPort* setupSerialPort();
 SerialWrapper* serialPort;
 
-QSerialPort* setupSerialPort();
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
     serialPort = new SerialWrapper(setupSerialPort());
 
     return a.exec();
