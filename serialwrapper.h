@@ -3,12 +3,13 @@
 
 #include <QObject>
 #include <QtSerialPort>
+#include <QDebug>
 
 class SerialWrapper : public QObject
 {
     Q_OBJECT
 public:
-    explicit SerialWrapper(QSerialPort *serialPort, QObject *parent = nullptr);
+    explicit SerialWrapper(QObject *parent = nullptr);
 
  Q_SIGNALS:
 void OnDataReceived(QByteArray data);
@@ -21,6 +22,7 @@ void onReadData();
 
 private:
     QSerialPort* serialPort;
+    void setupSerialPort();
 };
 
 #endif // SERIALWRAPPER_H
