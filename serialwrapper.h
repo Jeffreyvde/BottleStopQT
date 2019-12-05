@@ -11,13 +11,13 @@ public:
     explicit SerialWrapper(QSerialPort *serialPort, QObject *parent = nullptr);
 
  Q_SIGNALS:
-void OnDataReceived(int value);
+void OnDataReceived(QByteArray data);
 
 public Q_SLOTS:
 void write(const QByteArray& data);
 
 private Q_SLOTS:
-void onReadyRead();
+void onReadData();
 
 private:
     QSerialPort* serialPort;

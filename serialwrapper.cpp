@@ -3,11 +3,14 @@
 SerialWrapper::SerialWrapper(QSerialPort* serialPort, QObject *parent) : QObject(parent)
 {
     this->serialPort = serialPort;
-    connect(serialPort, SIGNAL(readyRead()), SLOT(onReadyRead()));
+    connect(serialPort, SIGNAL(readyRead()), SLOT(onReadData()));
 }
 
-void SerialWrapper::onReadyRead(){
-
+void SerialWrapper::onReadData()
+{
+    QByteArray data = serialPort->readAll();
+    qDebug() << data;
+    OnDataReceived(data);
 }
 
 void SerialWrapper::write(const QByteArray& data){
