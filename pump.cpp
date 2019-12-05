@@ -12,6 +12,7 @@ Pump::Pump(QString name, int powerPin, int PWMPin, int flowrate, QObject *parent
     this->PWMPin = PWMPin;
     softPwmCreate(PWMPin, 0, maxPWM);
 
+    //Flowrate in ML/minute
     this->flowrate = flowrate;
 }
 Pump::~Pump(){}
