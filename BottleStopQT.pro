@@ -7,6 +7,7 @@
 QT += core gui
 QT += core
 QT += network
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = BottleStopQT
@@ -28,12 +29,14 @@ SOURCES += \
         beverage.cpp \
         main.cpp \
         mainwindow.cpp \
-        mixratio.cpp
+        mixratio.cpp \
+        pump.cpp
 
 HEADERS += \
         beverage.h \
         mainwindow.h \
-        mixratio.h
+        mixratio.h \
+        pump.h
 
 FORMS += \
         mainwindow.ui
