@@ -12,7 +12,7 @@ public:
     explicit SerialWrapper(QObject *parent = nullptr);
 
  Q_SIGNALS:
-void OnDataReceived(QByteArray data);
+void OnDataReceived(QByteArray data); //Event when data is received
 
 public Q_SLOTS:
 void write(const QByteArray& data);

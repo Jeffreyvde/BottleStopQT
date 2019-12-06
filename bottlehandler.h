@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+//TODO: Fill required data
+
 class BottleHandler : public QObject
 {
     Q_OBJECT
