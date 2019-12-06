@@ -6,10 +6,10 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    wiringPiSetup();
-
     MainWindow w;
     w.show();
+
+    wiringPiSetup();
 
     return a.exec();
 }
