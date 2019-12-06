@@ -6,6 +6,7 @@
 
 QT += core gui
 QT += core
+QT += serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,11 +28,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-        pump.cpp
+        pump.cpp \ 
+        serialwrapper.cpp \
+        devicemanager.cpp \
+        bottlehandler.cpp 
 
 HEADERS += \
         mainwindow.h \
-        pump.h
+        pump.h \
+        serialwrapper.h \
+        devicemanager.h \
+        bottlehandler.h
+
 
 FORMS += \
         mainwindow.ui
