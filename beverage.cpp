@@ -3,9 +3,9 @@
 Beverage::Beverage(QJsonObject beverageData)
 {
     this->beverageData = beverageData;
-    this->id = beverageData["ID"].toInt();
-    this->name = beverageData["ID"].toString();
-    this->costPerML = beverageData["ID"].toDouble();
+    id = beverageData["ID"].toInt();
+    name = beverageData["ID"].toString();
+    costPerML = beverageData["ID"].toDouble();
 
     QJsonArray recipe = beverageData["Recipe"].toArray();
 
@@ -15,7 +15,7 @@ Beverage::Beverage(QJsonObject beverageData)
         double ratio = mix["Ratio"].toDouble();
 
         MixRatio mixRatio(pumpName, ratio);
-        this->ratios.push_back(mixRatio);
+        ratios.push_back(mixRatio);
     }
 
     // https://ce42bbc2-5a1b-4df2-9a4d-1043df79c491.mock.pstmn.io/singleBeverage

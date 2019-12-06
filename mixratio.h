@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QObject>
+#include "pump.h"
 
 
 class MixRatio
@@ -10,7 +11,7 @@ class MixRatio
 public:
     MixRatio(QString pumpName, double ratio);
     double ratio;
-//    Pump* pump
+    Pump* pump;
 };
 
 #endif // MIXRATIO_H
