@@ -6,6 +6,7 @@
 
 QT += core gui
 QT += core
+QT += network
 QT += serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -25,20 +26,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+        beverage.cpp \
         main.cpp \
         mainwindow.cpp \
+        mixratio.cpp \
         pump.cpp \ 
         serialwrapper.cpp \
         devicemanager.cpp \
         bottlehandler.cpp 
 
 HEADERS += \
+        beverage.h \
         mainwindow.h \
+        mixratio.h \
         pump.h \
         serialwrapper.h \
         devicemanager.h \
         bottlehandler.h
-
 
 FORMS += \
         mainwindow.ui
@@ -50,4 +54,7 @@ DEFINES += WIRING_PI
 
 target.path = /home/pi
 INSTALLS += target
+
+DISTFILES += \
+    tmp
 
