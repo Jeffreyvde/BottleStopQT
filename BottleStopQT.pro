@@ -55,3 +55,6 @@ DEFINES += WIRING_PI
 target.path = /home/pi
 INSTALLS += target
 
+DISTFILES += \
+    tmp
+

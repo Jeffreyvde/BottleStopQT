@@ -17,11 +17,19 @@ class Beverage
 {
 public:
     Beverage(QJsonObject beverageData);
-    QJsonObject beverageData;
+
+    QString getName();
+    double getCostPerML();
+    std::vector<MixRatio> getRatios();
+
+private:
     int id;
     QString name;
     double costPerML;
     std::vector<MixRatio> ratios;
+
+    void setRecipe(QJsonArray recipe);
 };
 
 #endif // BEVERAGE_H
+

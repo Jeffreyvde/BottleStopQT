@@ -2,13 +2,16 @@
 
 Beverage::Beverage(QJsonObject beverageData)
 {
-    this->beverageData = beverageData;
     id = beverageData["ID"].toInt();
-    name = beverageData["ID"].toString();
-    costPerML = beverageData["ID"].toDouble();
+    name = beverageData["Name"].toString();
+    costPerML = beverageData["CostPerML"].toDouble();
 
     QJsonArray recipe = beverageData["Recipe"].toArray();
+    setRecipe(recipe);
+}
 
+void Beverage::setRecipe(QJsonArray recipe)
+{
     for(int i = 0; i < recipe.size(); i++){
         QJsonObject mix = recipe[i].toObject();
         QString pumpName = mix["Name"].toString();
@@ -17,31 +20,20 @@ Beverage::Beverage(QJsonObject beverageData)
         MixRatio mixRatio(pumpName, ratio);
         ratios.push_back(mixRatio);
     }
+}
 
-    // https://ce42bbc2-5a1b-4df2-9a4d-1043df79c491.mock.pstmn.io/singleBeverage
-    // https://ce42bbc2-5a1b-4df2-9a4d-1043df79c491.mock.pstmn.io/allBeverage
-//    QUrl test("https://ce42bbc2-5a1b-4df2-9a4d-1043df79c491.mock.pstmn.io/singleBeverage");
+QString Beverage::getName()
+{
+    return name;
+}
 
-//    QNetworkRequest request(test);
-//    QNetworkAccessManager nam;
-//    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+double Beverage::getCostPerML()
+{
+    return costPerML;
+}
 
-//    QNetworkReply *reply = nam.get(request);
-//    while (!reply->isFinished())
-//    {
-//        qApp->processEvents();
-//    }
-
-//    QByteArray response_data = reply->readAll();
-//    QJsonDocument data = QJsonDocument::fromJson(response_data);
-//    QJsonObject json_obj = data.object();
-//    QJsonArray recipe = json_obj["recipe"].toArray();
-
-
-//    reply->deleteLater();
-
-//    qDebug() << recipe[1].toObject()["Name"];
-
-
+std::vector<MixRatio> Beverage::getRatios()
+{
+    return ratios;
 }
 
