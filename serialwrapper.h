@@ -12,7 +12,7 @@ public:
     explicit SerialWrapper(QObject *parent = nullptr);
 
 signals:
-void dataReady(); //Event when data is received
+void dataReady(QString data); //Event when data is received
 
 public:
 void write(const QByteArray& data);

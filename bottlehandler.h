@@ -16,7 +16,7 @@ public:
 signals:
 
 public slots:
-    void onDataReceived();
+    void onDataReceived(QString data);
 };
 
 #endif // BOTTLEHANDLER_H

@@ -2,11 +2,11 @@
 
 BottleHandler::BottleHandler(QObject *parent) : QObject(parent)
 {
-    connect(DeviceManager::getInstance().getSerialConnection(), SIGNAL(dataReady()), this, SLOT(onDataReceived()));
+    connect(DeviceManager::getInstance().getSerialConnection(), SIGNAL(dataReady(QString)), this, SLOT(onDataReceived(QString)));
 }
 
-void BottleHandler::onDataReceived()
+void BottleHandler::onDataReceived(QString data)
 {
-    //qDebug() << data;
-    qDebug() << "test";
+    qDebug() << data;
+    //qDebug() << "test";
 }
