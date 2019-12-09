@@ -2,6 +2,8 @@
 #define BOTTLEHANDLER_H
 
 #include <QObject>
+#include "devicemanager.h"
+#include "serialwrapper.h"
 
 //TODO: Fill required data
 
@@ -14,6 +16,7 @@ public:
 signals:
 
 public slots:
+    void onDataReceived();
 };
 
 #endif // BOTTLEHANDLER_H

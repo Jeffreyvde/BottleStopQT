@@ -11,13 +11,13 @@ class SerialWrapper : public QObject
 public:
     explicit SerialWrapper(QObject *parent = nullptr);
 
- Q_SIGNALS:
-void OnDataReceived(QByteArray data); //Event when data is received
+signals:
+void dataReady(); //Event when data is received
 
-public Q_SLOTS:
+public:
 void write(const QByteArray& data);
 
-private Q_SLOTS:
+private slots:
 void onReadData();
 
 private:

@@ -11,8 +11,8 @@ SerialWrapper::SerialWrapper(QObject *parent) : QObject(parent)
 void SerialWrapper::onReadData()
 {
     QByteArray data = serialPort->readAll();
+    emit dataReady();
     qDebug() << data;
-    OnDataReceived(data);
 }
 
 //Write to the serial port
