@@ -5,6 +5,7 @@
 #include <wiringPi.h>
 #include <softPwm.h>
 #include <QObject>
+#include <QTimer>
 
 //Define the variables, methods and libraries of the Pump class.
 class Pump : public QObject
@@ -19,12 +20,12 @@ public:
 public:
     QString name;   //Name of the pump.
 
-    int PWM;        //PWM for the pumps.
     bool isActive;  //Pump active status.
 
     void pumpAmount(int amountInML);
     void activate();
     void setPWM(int PWM);
+    bool getIsActivte();
 
 public slots:
     void deactivate();
