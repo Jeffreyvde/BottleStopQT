@@ -71,7 +71,6 @@ float Pump::calculateFlowrate()
     return flowrate * flowrateMultiplier;
 }
 
-
 bool Pump::getIsActivte()
 {
   return active;

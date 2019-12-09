@@ -18,13 +18,10 @@ public:
     ~Pump();
 
 public:
-    QString name;   //Name of the pump.
-
-    bool isActive;  //Pump active status.
-
     void pumpAmount(int amountInML);
     void activate();
     void setPWM(int PWM);
+
     bool getIsActivte();
 
 public slots:
@@ -36,7 +33,9 @@ private:
     int PWMPin;     //PWM pin of the pump.
     int flowrate;   //Flowrate in ML/minute.
 
-    bool active;
+    QString name;   //Name of the pump.
+
+    bool active;    //Pump active status.
 
     const int maxPWM = 100;
 
