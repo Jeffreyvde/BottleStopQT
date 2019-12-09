@@ -1,5 +1,4 @@
 #include "pump.h"
-#include <QTimer>
 
 //Constructor and destructor for the Pump class. Initializes the variables.
 Pump::Pump(QString name, int powerPin, int PWMPin, int flowrate, QObject *parent) : QObject(parent)
@@ -20,8 +19,6 @@ Pump::~Pump(){}
 //Pumps the specific amount which is given.
 void Pump::pumpAmount(int amountInML)
 {
-
-
     calculateFlowrate();
     activate();
 
@@ -36,7 +33,7 @@ void Pump::pumpAmount(int amountInML)
 //Acitvates and controls the Pump by setting its pin to HIGH, and its PWM value.
 void Pump::activate()
 {
-    isActive = true;
+    active = true;
 
     digitalWrite(powerPin, HIGH);
     pwmWrite(PWMPin, PWM);
@@ -45,7 +42,7 @@ void Pump::activate()
 //Deactivates the Pump by setting its pin to LOW.
 void Pump::deactivate()
 {
-    isActive = false;
+    active = false;
     digitalWrite(powerPin, LOW);
 }
 
@@ -72,4 +69,9 @@ float Pump::calculateFlowrate()
 {
     float flowrateMultiplier = PWM / 100;
     return flowrate * flowrateMultiplier;
+}
+
+bool Pump::getActive()
+{
+  return active;
 }
