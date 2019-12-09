@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "pump.h"
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -18,6 +19,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
 };
 
 #endif // MAINWINDOW_H

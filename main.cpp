@@ -1,6 +1,6 @@
-#include "mainwindow.h"
 #include <QApplication>
 #include <wiringPi.h>
+#include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,3 +13,5 @@ int main(int argc, char *argv[])
 
     return a.exec();
 }
+
+
