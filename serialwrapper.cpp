@@ -12,7 +12,6 @@ void SerialWrapper::onReadData()
 {
     QByteArray data = serialPort->readAll();
     emit dataReady(QString::fromStdString(data.toStdString()));
-    //qDebug() << data;
 }
 
 //Write to the serial port

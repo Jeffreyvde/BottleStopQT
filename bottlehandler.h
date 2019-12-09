@@ -17,6 +17,10 @@ signals:
 
 public slots:
     void onDataReceived(QString data);
+
+private:
+    const QString cancelRequest = "Cancel";
+    const int idLength = 8;
 };
 
 #endif // BOTTLEHANDLER_H

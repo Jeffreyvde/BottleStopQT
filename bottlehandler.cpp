@@ -8,5 +8,8 @@ BottleHandler::BottleHandler(QObject *parent) : QObject(parent)
 void BottleHandler::onDataReceived(QString data)
 {
     qDebug() << data;
-    //qDebug() << "test";
+    if(data.length() == idLength)
+         qDebug() << "id";
+    else if(data == cancelRequest)
+        qDebug() << "cancel";
 }
