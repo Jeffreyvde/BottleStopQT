@@ -22,7 +22,7 @@ public:
     void activate();
     void setPWM(int PWM);
 
-    bool getIsActivte();
+    bool getActive();
 
 public slots:
     void deactivate();
