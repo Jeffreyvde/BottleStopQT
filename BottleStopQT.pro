@@ -33,7 +33,8 @@ SOURCES += \
         pump.cpp \ 
         serialwrapper.cpp \
         devicemanager.cpp \
-        bottlehandler.cpp 
+        bottlehandler.cpp \ 
+        beverageselection.cpp
 
 HEADERS += \
         beverage.h \
@@ -42,7 +43,8 @@ HEADERS += \
         pump.h \
         serialwrapper.h \
         devicemanager.h \
-        bottlehandler.h
+        bottlehandler.h \
+        beverageselection.h
 
 FORMS += \
         mainwindow.ui
