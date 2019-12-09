@@ -13,7 +13,7 @@ public:
         }
 
 public:
-
+       SerialWrapper* getSerialConnection();
 
 
 private:
@@ -21,7 +21,7 @@ private:
 
        //pumps: std::map<string, Pump>;
        //beverages std::map<string, Beverage>;
-       SerialWrapper* serialPort;
+       SerialWrapper* serialConnection;
 
 
 
