@@ -5,3 +5,8 @@ DeviceManager::DeviceManager()
 {
     serialPort = new SerialWrapper();
 }
+
+Pump& DeviceManager::getPumpFromMap(QString key)
+{
+    return pumpMap[key];
+}

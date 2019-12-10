@@ -1,11 +1,9 @@
 #ifndef BEVERAGE_H
 #define BEVERAGE_H
 
-//#include <QMainWindow>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkReply>
-#include <QJsonDocument>
 #include <QJsonDocument>
 #include <QJsonValue>
 #include <QJsonArray>
