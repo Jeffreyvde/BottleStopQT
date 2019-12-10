@@ -1,7 +1,7 @@
 #ifndef DEVICEMANAGER_H
 #define DEVICEMANAGER_H
 
-#include "serialwrapper.h"
+#include "RFID/serialwrapper.h"
 
 class DeviceManager
 {
@@ -13,7 +13,7 @@ public:
         }
 
 public:
-
+       SerialWrapper* getSerialConnection();
 
 
 private:
@@ -21,7 +21,7 @@ private:
 
        //pumps: std::map<string, Pump>;
        //beverages std::map<string, Beverage>;
-       SerialWrapper* serialPort;
+       SerialWrapper* serialConnection;
 
 
 
