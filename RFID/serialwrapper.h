@@ -12,13 +12,13 @@ public:
     explicit SerialWrapper(QObject *parent = nullptr);
 
 signals:
-void dataReady(QString data); //Event when data is received
+    void dataReady(QString data); //Event when data is received
 
 public:
-void write(const QByteArray& data);
+    void write(const QByteArray& data);
 
 private slots:
-void onReadData();
+    void onReadData();
 
 private:
     QSerialPort* serialPort;

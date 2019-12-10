@@ -15,7 +15,8 @@ void SerialWrapper::onReadData()
 }
 
 //Write to the serial port
-void SerialWrapper::write(const QByteArray& data){
+void SerialWrapper::write(const QByteArray& data)
+{
     serialPort->write(data);
 }
 
