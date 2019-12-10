@@ -3,7 +3,12 @@
 //Initialize the devicemanager. This happens when the singelton is first called.
 DeviceManager::DeviceManager()
 {
-    serialPort = new SerialWrapper();
+    serialConnection = new SerialWrapper();
+}
+
+SerialWrapper* DeviceManager::getSerialConnection()
+{
+    return serialConnection;
 }
 
 Pump& DeviceManager::getPumpFromMap(QString key)

@@ -1,10 +1,10 @@
 #ifndef DEVICEMANAGER_H
 #define DEVICEMANAGER_H
 
-#include "serialwrapper.h"
+
 #include "pump.h"
 #include "beverage.h"
-
+#include "RFID/serialwrapper.h"
 
 class DeviceManager
 {
@@ -16,13 +16,15 @@ public:
     }
 
 public:
+    SerialWrapper* getSerialConnection();
     Pump& getPumpFromMap(QString key);
 
 private:
     DeviceManager();
+
     std::map<QString, Pump> pumpMap;
     std::map<QString, Beverage> beverageMap;
-    SerialWrapper* serialPort;
+    SerialWrapper* serialConnection;
 
 public:
     DeviceManager(DeviceManager const&) = delete;
