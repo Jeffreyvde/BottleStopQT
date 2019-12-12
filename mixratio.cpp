@@ -4,6 +4,6 @@
 MixRatio::MixRatio(QString pumpName, double ratio)
 {
     this->ratio = ratio;
-    pump = &DeviceManager::getInstance().getPumpFromMap(pumpName);
+    pump = DeviceManager::getInstance().getPumpFromMap(pumpName);
 }
 

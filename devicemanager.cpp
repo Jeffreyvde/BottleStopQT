@@ -11,7 +11,7 @@ SerialWrapper* DeviceManager::getSerialConnection()
     return serialConnection;
 }
 
-Pump& DeviceManager::getPumpFromMap(QString key)
+Pump* DeviceManager::getPumpFromMap(QString key)
 {
     return pumpMap[key];
 }

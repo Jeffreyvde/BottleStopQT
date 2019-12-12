@@ -17,13 +17,13 @@ public:
 
 public:
     SerialWrapper* getSerialConnection();
-    Pump& getPumpFromMap(QString key);
+    Pump* getPumpFromMap(QString key);
 
 private:
     DeviceManager();
 
-    std::map<QString, Pump> pumpMap;
-    std::map<QString, Beverage> beverageMap;
+    std::map<QString, Pump*> pumpMap;
+    std::map<QString, Beverage*> beverageMap;
     SerialWrapper* serialConnection;
 
 public:
