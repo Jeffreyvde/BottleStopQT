@@ -34,7 +34,8 @@ SOURCES += \
         serialwrapper.cpp \
         devicemanager.cpp \
         bottlehandler.cpp \ 
-        beverageselection.cpp
+        beverageselection.cpp \
+    screensaver.cpp
 
 HEADERS += \
         beverage.h \
@@ -44,7 +45,8 @@ HEADERS += \
         serialwrapper.h \
         devicemanager.h \
         bottlehandler.h \
-        beverageselection.h
+        beverageselection.h \
+    screensaver.h
 
 FORMS += \
         mainwindow.ui
