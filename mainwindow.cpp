@@ -6,6 +6,11 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
+    QPixmap pixmap(":/beverages/water/Beverages/Water.png");
+    QIcon ButtonIcon(pixmap);
+    ui->waterButton->setIcon(ButtonIcon);
+    ui->waterButton->setIconSize(pixmap.rect().size());
+
     for(int i = 0; i < 6; i++)
     {
         for(int j = 0; j < 2; j++)
@@ -23,3 +28,8 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_waterButton_clicked()
+{
+
+}
