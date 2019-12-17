@@ -7,7 +7,11 @@
 QT += core gui
 QT += core
 QT += network
-QT += serialport
+
+linux-arm-g++{
+    QT += serialport
+}
+
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -51,13 +55,15 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
-INCLUDEPATH += /opt/qt5pi/sysroot/usr/include
-LIBS += -L/opt/qt5pi/sysroot/usr/lib -lwiringPi
+linux-arm-g++{
+    INCLUDEPATH += /opt/qt5pi/sysroot/usr/include
+    LIBS += -L/opt/qt5pi/sysroot/usr/lib -lwiringPi
 
-DEFINES += WIRING_PI
+    DEFINES += WIRING_PI
 
-target.path = /home/pi
-INSTALLS += target
+    target.path = /home/pi
+    INSTALLS += target
+}
 
 DISTFILES += \
     tmp

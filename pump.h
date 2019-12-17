@@ -2,10 +2,13 @@
 #define PUMP_H
 
 #include <qstring.h>
-#include <wiringPi.h>
-#include <softPwm.h>
 #include <QObject>
 #include <QTimer>
+
+#ifdef __arm__
+#include <wiringPi.h>
+#include <softPwm.h>
+#endif
 
 //Define the variables, methods and libraries of the Pump class.
 class Pump : public QObject
