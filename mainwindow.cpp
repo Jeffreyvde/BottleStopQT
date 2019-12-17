@@ -6,17 +6,22 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
-    QPixmap pixmap(":/beverages/water/Beverages/Water.png");
+    QPixmap pixmap(":/beverages/Beverages/Water.png");
     QIcon ButtonIcon(pixmap);
     ui->waterButton->setIcon(ButtonIcon);
     ui->waterButton->setIconSize(pixmap.rect().size());
 
-    for(int i = 0; i < 6; i++)
+    for(int i = 0; i < 4; i++)
     {
         for(int j = 0; j < 2; j++)
         {
             QPushButton *button=new QPushButton();
-            button->setText(QString::number(i*j));
+            QPixmap pixmap(":/beverages/Beverages/Sprite.png");
+            QIcon ButtonIcon(pixmap);
+            button->setIcon(ButtonIcon);
+            button->setFixedSize(pixmap.rect().size());
+            button->setIconSize(pixmap.rect().size());
+            button->setStyleSheet("QPushButton{border: none}");
             ui->grid->addWidget(button, i, j);
         }
     }

@@ -1,5 +1,6 @@
 <RCC>
-    <qresource prefix="/beverages/water">
+    <qresource prefix="/beverages">
         <file>Beverages/Water.png</file>
+        <file>Beverages/Sprite.png</file>
     </qresource>
 </RCC>
