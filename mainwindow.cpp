@@ -11,6 +11,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->waterButton->setIcon(ButtonIcon);
     ui->waterButton->setIconSize(pixmap.rect().size());
 
+   ui->scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+   ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+   QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture);
+
+
+
     for(int i = 0; i < 4; i++)
     {
         for(int j = 0; j < 2; j++)

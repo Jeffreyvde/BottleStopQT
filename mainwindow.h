@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QScrollArea>
+#include <QScroller>
 #include "pump.h"
 
 
