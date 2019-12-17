@@ -68,3 +68,6 @@ linux-arm-g++{
 DISTFILES += \
     tmp
 
+RESOURCES += \
+    Images/mainpage.qrc
+
