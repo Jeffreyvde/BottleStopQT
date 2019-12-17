@@ -142,7 +142,7 @@ border: none;
        <number>0</number>
       </property>
       <property name="rightMargin">
-       <number>25</number>
+       <number>50</number>
       </property>
       <property name="bottomMargin">
        <number>0</number>
@@ -163,7 +163,7 @@ border: none;
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>446</width>
+           <width>421</width>
            <height>479</height>
           </rect>
          </property>

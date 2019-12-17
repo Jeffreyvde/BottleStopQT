@@ -6,6 +6,8 @@
 #include <QScrollArea>
 #include <QScroller>
 #include "pump.h"
+#include "beveragefactory.h"
+#include "beverage.h"
 
 
 namespace Ui {

@@ -16,19 +16,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
    QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture);
 
 
+   Beverage beverage(0,"Sprite", ":/beverages/Beverages/Sprite.png", 0);
+   BeverageFactory factory("QPushButton{border: none}");
 
     for(int i = 0; i < 4; i++)
     {
         for(int j = 0; j < 2; j++)
         {
-            QPushButton *button=new QPushButton();
-            QPixmap pixmap(":/beverages/Beverages/Sprite.png");
-            QIcon ButtonIcon(pixmap);
-            button->setIcon(ButtonIcon);
-            button->setFixedSize(pixmap.rect().size());
-            button->setIconSize(pixmap.rect().size());
-            button->setStyleSheet("QPushButton{border: none}");
-            ui->grid->addWidget(button, i, j);
+            ui->grid->addWidget(factory.createBeverage(beverage), i, j);
         }
     }
 

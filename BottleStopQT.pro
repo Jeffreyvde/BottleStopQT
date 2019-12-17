@@ -39,7 +39,8 @@ SOURCES += \
         RFID/bottlehandler.cpp \
         RFID/serialwrapper.cpp \
         RFID/user.cpp \
-        RFID/bottle.cpp
+        RFID/bottle.cpp \
+    beveragefactory.cpp
 
 HEADERS += \
         beverage.h \
@@ -50,7 +51,8 @@ HEADERS += \
         RFID/bottlehandler.h \
         RFID/serialwrapper.h \
         RFID/user.h \
-        RFID/bottle.h
+        RFID/bottle.h \
+    beveragefactory.h
 
 FORMS += \
         mainwindow.ui
