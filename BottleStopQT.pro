@@ -7,10 +7,7 @@
 QT += core gui
 QT += core
 QT += network
-
-linux-arm-g++{
-    QT += serialport
-}
+QT += serialport
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -40,7 +37,7 @@ SOURCES += \
         RFID/serialwrapper.cpp \
         RFID/user.cpp \
         RFID/bottle.cpp \
-    beveragefactory.cpp
+        beveragefactory.cpp
 
 HEADERS += \
         beverage.h \
@@ -52,12 +49,11 @@ HEADERS += \
         RFID/serialwrapper.h \
         RFID/user.h \
         RFID/bottle.h \
-    beveragefactory.h
+        beveragefactory.h
 
 FORMS += \
         mainwindow.ui
 
-linux-arm-g++{
     INCLUDEPATH += /opt/qt5pi/sysroot/usr/include
     LIBS += -L/opt/qt5pi/sysroot/usr/lib -lwiringPi
 
@@ -65,7 +61,7 @@ linux-arm-g++{
 
     target.path = /home/pi
     INSTALLS += target
-}
+
 
 DISTFILES += \
     tmp
