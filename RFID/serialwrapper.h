@@ -2,8 +2,11 @@
 #define SERIALWRAPPER_H
 
 #include <QObject>
-#include <QtSerialPort>
 #include <QDebug>
+
+#ifdef __arm__
+    #include <QtSerialPort>
+#endif
 
 class SerialWrapper : public QObject
 {
@@ -21,7 +24,9 @@ private slots:
     void onReadData();
 
 private:
+#ifdef __arm__
     QSerialPort* serialPort;
+#endif
     void setupSerialPort();
 };
 

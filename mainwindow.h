@@ -2,7 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPushButton>
+#include <QScrollArea>
+#include <QScroller>
 #include "pump.h"
+#include "beveragefactory.h"
+#include "beverage.h"
 
 
 namespace Ui {
@@ -16,6 +21,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+private slots:
+    void on_waterButton_clicked();
 
 private:
     Ui::MainWindow *ui;

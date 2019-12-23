@@ -9,6 +9,7 @@ QT += core
 QT += network
 QT += serialport
 
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = BottleStopQT
@@ -35,7 +36,8 @@ SOURCES += \
         RFID/bottlehandler.cpp \
         RFID/serialwrapper.cpp \
         RFID/user.cpp \
-        RFID/bottle.cpp
+        RFID/bottle.cpp \
+        beveragefactory.cpp
 
 HEADERS += \
         beverage.h \
@@ -46,19 +48,24 @@ HEADERS += \
         RFID/bottlehandler.h \
         RFID/serialwrapper.h \
         RFID/user.h \
-        RFID/bottle.h
+        RFID/bottle.h \
+        beveragefactory.h
 
 FORMS += \
         mainwindow.ui
 
-INCLUDEPATH += /opt/qt5pi/sysroot/usr/include
-LIBS += -L/opt/qt5pi/sysroot/usr/lib -lwiringPi
+    INCLUDEPATH += /opt/qt5pi/sysroot/usr/include
+    LIBS += -L/opt/qt5pi/sysroot/usr/lib -lwiringPi
 
-DEFINES += WIRING_PI
+    DEFINES += WIRING_PI
 
-target.path = /home/pi
-INSTALLS += target
+    target.path = /home/pi
+    INSTALLS += target
+
 
 DISTFILES += \
     tmp
+
+RESOURCES += \
+    Images/mainpage.qrc
 

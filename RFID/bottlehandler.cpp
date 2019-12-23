@@ -10,6 +10,6 @@ void BottleHandler::onDataReceived(QString data)
     qDebug() << data;
     if(data.length() == idLength)
          qDebug() << "id";
-    else if(data == cancelRequest)
+    else if(data == cancelRequest || data[0] == 'C')
         qDebug() << "cancel";
 }

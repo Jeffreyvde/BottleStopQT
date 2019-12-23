@@ -6,11 +6,14 @@ Pump::Pump(QString name, int powerPin, int PWMPin, int flowrate, QObject *parent
     this->name = name;
 
     this->powerPin = powerPin;
+    this->PWMPin = PWMPin;
+
+#ifdef __arm__
     pinMode(powerPin, OUTPUT);
 
-    this->PWMPin = PWMPin;
     pinMode(PWMPin, OUTPUT);
     softPwmCreate(PWMPin, 0, maxPWM);
+#endif
 
     this->flowrate = flowrate;
 }
@@ -35,15 +38,21 @@ void Pump::activate()
 {
     active = true;
 
+#ifdef __arm__
     digitalWrite(powerPin, HIGH);
     pwmWrite(PWMPin, PWM);
+#endif
 }
 
 //Deactivates the Pump by setting its pin to LOW.
 void Pump::deactivate()
 {
     active = false;
+
+#ifdef __arm__
     digitalWrite(powerPin, LOW);
+#endif
+
 }
 
 //Sets a specific PWM to adjust the flowrate.
@@ -55,7 +64,9 @@ void Pump::setPWM(int PWM)
         this->PWM = maxPWM;
 
     this->PWM = PWM;
+#ifdef __arm__
     softPwmWrite(PWMPin, this->PWM);
+#endif
 }
 
 //Calculates the activation time based on amount and pump flowrate.

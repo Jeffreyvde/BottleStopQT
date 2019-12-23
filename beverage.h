@@ -15,14 +15,18 @@ class Beverage
 {
 public:
     Beverage(QJsonObject beverageData);
+    Beverage(int id, QString name, QString url, double costPerML);
 
     QString getName();
     double getCostPerML();
     std::vector<MixRatio> getRatios();
 
+    QString getUrl() const;
+
 private:
     int id;
     QString name;
+    QString url;
     double costPerML;
     std::vector<MixRatio> ratios;
 

@@ -12,6 +12,14 @@ Beverage::Beverage(QJsonObject beverageData)
     setRecipe(recipe);
 }
 
+Beverage::Beverage(int id, QString name, QString url, double costPerML)
+{
+    this->id = id;
+    this->name = name;
+    this->url = url;
+    this->costPerML = costPerML;
+}
+
 // Initialize beverage recipe(mix)
 void Beverage::setRecipe(QJsonArray recipe)
 {
@@ -41,5 +49,10 @@ double Beverage::getCostPerML()
 std::vector<MixRatio> Beverage::getRatios()
 {
     return ratios;
+}
+
+QString Beverage::getUrl() const
+{
+    return url;
 }
 
