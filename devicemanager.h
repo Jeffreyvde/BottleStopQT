@@ -19,12 +19,18 @@ public:
     SerialWrapper* getSerialConnection();
     Pump* getPumpFromMap(QString key);
 
+    QString getId() const;
+    void setId(const QString &value);
+    std::map<QString, Pump *> getPumpMap() const;
+
 private:
     DeviceManager();
 
     std::map<QString, Pump*> pumpMap;
     std::map<QString, Beverage*> beverageMap;
     SerialWrapper* serialConnection;
+
+    QString bottleID;
 
 public:
     DeviceManager(DeviceManager const&) = delete;
