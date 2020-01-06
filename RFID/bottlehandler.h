@@ -4,6 +4,7 @@
 #include <QObject>
 #include "devicemanager.h"
 #include "serialwrapper.h"
+#include "bottlestate.h"
 
 //TODO: Fill required data
 
@@ -19,8 +20,7 @@ public slots:
     void onDataReceived(QString data);
 
 private:
-    const QString cancelRequest = "Cancel";
-    const int idLength = 8;
+    BottleState* state;
 };
 
 #endif // BOTTLEHANDLER_H
