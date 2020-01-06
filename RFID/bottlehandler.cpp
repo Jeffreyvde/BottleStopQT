@@ -8,6 +8,5 @@ BottleHandler::BottleHandler(QObject *parent) : QObject(parent)
 
 void BottleHandler::onDataReceived(QString data)
 {
-    qDebug() << data;
     state->handle(data);
 }

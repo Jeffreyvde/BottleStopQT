@@ -35,21 +35,30 @@ void BottleState::addData(QString data)
     if(serialData.length() > 0)
         serialData += data;
     else
+    {
         serialData = data;
+    }
 }
 
 //Listen if the received data is an id or cancel event
 void BottleState::listen()
 {
-    state = Canceling;
-    handle();
+    //Remove /r and /ne2
+    serialData.chop(2);
 
-    serialData.chop(1);
+
     if(serialData.length() == idLength)
     {
+        qDebug() << "Connected";
         state = Connected;
         DeviceManager::getInstance().setId(serialData);
     }
+    else if(serialData == cancelRequest)
+    {
+        state = Canceling;
+        handle();
+    }
+    serialData = "";
 }
 
 //Cancel all pumps
@@ -59,4 +68,6 @@ void BottleState::cancel()
     {
         mapIndex.second->deactivate();
     }
+    qDebug() << "Cancel";
+    state = Scanning;
 }
