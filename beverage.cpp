@@ -3,9 +3,9 @@
 // Initialize id, name, cost per milliliter and set recipe
 Beverage::Beverage(QJsonObject beverageData)
 {
-    id = beverageData["ID"].toInt();
-    name = beverageData["Name"].toString();
-    costPerML = beverageData["CostPerML"].toDouble();
+    id = beverageData["beverageId"].toInt();
+    name = beverageData["beverageName"].toString();
+    costPerML = beverageData["beveragePrice"].toDouble();
 
     QJsonArray recipe = beverageData["Recipe"].toArray();
     ratios.reserve(2);
@@ -28,8 +28,8 @@ void Beverage::setRecipe(QJsonArray recipe)
         QString pumpName = mix["Name"].toString();
         double ratio = mix["Ratio"].toDouble();
 
-        MixRatio mixRatio(pumpName, ratio);
-        ratios.emplace_back(mixRatio);
+        //MixRatio mixRatio(pumpName, ratio);
+       // ratios.emplace_back(mixRatio);
     }
 }
 
