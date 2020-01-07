@@ -1,9 +1,9 @@
 #include "mixratio.h"
 #include "devicemanager.h"
 
-MixRatio::MixRatio(QString pumpName, double ratio)
+MixRatio::MixRatio(int pumpID, double ratio)
 {
     this->ratio = ratio;
-    pump = DeviceManager::getInstance().getPumpFromMap(pumpName);
+    pump = DeviceManager::getInstance().getPump(pumpID);
 }
 
