@@ -8,6 +8,7 @@
 #include "pump.h"
 #include "beveragefactory.h"
 #include "beverage.h"
+#include "devicemanager.h"
 
 
 namespace Ui {
@@ -27,6 +28,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+
+    void spawnButtons();
 
 };
 

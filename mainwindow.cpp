@@ -14,18 +14,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
    ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
    QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture);
 
-
-   Beverage beverage(0,"Sprite", ":/beverages/Beverages/Sprite.png", 0);
-   BeverageFactory factory("QPushButton{border: none}");
-
-    for(int i = 0; i < 4; i++)
-    {
-        for(int j = 0; j < 2; j++)
-        {
-            ui->grid->addWidget(factory.createBeverage(beverage), i, j);
-        }
-    }
-
+   spawnButtons();
 }
 
 MainWindow::~MainWindow()
@@ -36,5 +25,20 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_waterButton_clicked()
 {
+        DeviceManager::getInstance().getBeverage(0);
+}
 
+// Spawn buttons
+void MainWindow::spawnButtons()
+{
+    BeverageFactory factory("QPushButton{border: none}");
+
+    bool spawnLeft = true;
+     std::vector<Beverage*> beverages = DeviceManager::getInstance().getBeverages();
+     for(uint i = 1; i < beverages.size() ; i++)
+     {
+         int offset = (spawnLeft) ? 0 : 1;
+         ui->grid->addWidget(factory.createBeverage(*beverages[i]), i - offset, offset);
+         spawnLeft = !spawnLeft;
+     }
 }
