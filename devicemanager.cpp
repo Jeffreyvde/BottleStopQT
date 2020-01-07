@@ -47,3 +47,10 @@ Pump* DeviceManager::getPump(int pumpIndex)
 {
     return pumps[pumpIndex];
 }
+
+//Get a beverage
+Beverage* DeviceManager::getBeverage(int beverageIndex)
+{
+    return beverages[beverageIndex];
+}
+

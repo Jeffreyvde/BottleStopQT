@@ -26,6 +26,7 @@ public:
     std::vector<Beverage *> getBeverages() const;
 
     Pump* getPump(int pumpIndex);
+    Beverage* getBeverage(int beverageIndex);
 
 private:
     DeviceManager();
