@@ -5,6 +5,8 @@
 #include "pump.h"
 #include "beverage.h"
 #include "RFID/serialwrapper.h"
+#include "apiservice.h"
+#include <QJsonObject>
 
 class DeviceManager
 {
@@ -17,18 +19,22 @@ public:
 
 public:
     SerialWrapper* getSerialConnection();
-    Pump* getPumpFromMap(QString key);
 
     QString getId() const;
     void setId(const QString &value);
-    std::map<QString, Pump *> getPumpMap() const;
+    std::vector<Pump *> getPumps() const;
+    std::vector<Beverage *> getBeverages() const;
+
+    Pump* getPump(int pumpIndex);
 
 private:
     DeviceManager();
 
-    std::map<QString, Pump*> pumpMap;
-    std::map<QString, Beverage*> beverageMap;
+    std::vector<Pump*> pumps;
+    std::vector<Beverage*> beverages;
     SerialWrapper* serialConnection;
+
+    ApiService* api;
 
     QString bottleID;
 

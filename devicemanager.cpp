@@ -4,12 +4,25 @@
 DeviceManager::DeviceManager()
 {
     serialConnection = new SerialWrapper();
+    api = new ApiService("https://bottlestopapi.azurewebsites.net");
+    QJsonArray json = api->getApi("/machine/availability/rRksBrcCH9SjyyKR3UhgsKZQbPE5tMJJ").array();
+    foreach (const QJsonValue & value, json)
+    {
+        QJsonObject obj = value.toObject();
+        beverages.push_back(new Beverage(obj["beverage"].toObject()));
+    }
+}
+
+//Getter for the entire beverage map
+std::vector<Beverage*> DeviceManager::getBeverages() const
+{
+    return beverages;
 }
 
 //Getter for the entire pump map
-std::map<QString, Pump *> DeviceManager::getPumpMap() const
+std::vector<Pump*> DeviceManager::getPumps() const
 {
-    return pumpMap;
+    return pumps;
 }
 //Getter for ID
 QString DeviceManager::getId() const
@@ -29,8 +42,8 @@ SerialWrapper* DeviceManager::getSerialConnection()
     return serialConnection;
 }
 
-//Get for pump map
-Pump* DeviceManager::getPumpFromMap(QString key)
+//Get a pump
+Pump* DeviceManager::getPump(int pumpIndex)
 {
-    return pumpMap[key];
+    return pumps[pumpIndex];
 }
