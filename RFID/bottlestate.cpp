@@ -63,12 +63,10 @@ void BottleState::listen()
 
 //Cancel all pumps
 void BottleState::cancel()
-{  
-
-    std::vector<Pump*> pumps = DeviceManager::getInstance().getPumps();
-    for(int i = 0; i < pumps.size(); i++)
+{
+    for (auto const& mapIndex : DeviceManager::getInstance().getPumpMap())
     {
-        pumps[i]->deactivate();
+        mapIndex.second->deactivate();
     }
     qDebug() << "Cancel";
     state = Scanning;
