@@ -1,14 +1,8 @@
 #ifndef BEVERAGE_H
 #define BEVERAGE_H
 
-#include <QtNetwork/QNetworkAccessManager>
-#include <QtNetwork/QNetworkRequest>
-#include <QtNetwork/QNetworkReply>
 #include <QJsonDocument>
-#include <QJsonValue>
 #include <QJsonArray>
-#include <QJsonObject>
-#include <QApplication>
 #include "mixratio.h"
 
 class Beverage
@@ -20,7 +14,6 @@ public:
     QString getName();
     double getCostPerML();
     std::vector<MixRatio> getRatios();
-
     QString getUrl() const;
 
 private:
@@ -30,8 +23,9 @@ private:
     double costPerML;
     std::vector<MixRatio> ratios;
 
-    void setRecipe(QJsonArray recipe);
+    void getRecipe();
 };
+
 
 #endif // BEVERAGE_H
 
