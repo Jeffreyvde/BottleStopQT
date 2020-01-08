@@ -17,9 +17,10 @@ int main(int argc, char *argv[])
     wiringPiSetup();
 #endif
 
+    bottle = new BottleHandler();
+    DeviceManager::getInstance().initializeDevice();
     MainWindow w;
     w.show();
-    bottle = new BottleHandler();
 
     return a.exec();
 }
