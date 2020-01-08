@@ -17,21 +17,28 @@ public:
         return instance;
     }
 
-public:
     SerialWrapper* getSerialConnection();
 
     QString getId() const;
     void setId(const QString &value);
-    std::vector<Pump *> getPumps() const;
+    std::map<int, Pump*> getPumpMap() const;
     std::vector<Beverage *> getBeverages() const;
 
-    Pump* getPump(int pumpIndex);
+    ApiService *getApi() const;
+
+    Pump* getPump(int ingredientID);
     Beverage* getBeverage(int beverageIndex);
+
+
+    void initializeDevice();
+
+    DeviceManager(DeviceManager const&) = delete;
+    void operator=(DeviceManager const&) = delete;
 
 private:
     DeviceManager();
 
-    std::vector<Pump*> pumps;
+    std::map<int, Pump*> pumpMap;
     std::vector<Beverage*> beverages;
     SerialWrapper* serialConnection;
 
@@ -39,9 +46,6 @@ private:
 
     QString bottleID;
 
-public:
-    DeviceManager(DeviceManager const&) = delete;
-    void operator=(DeviceManager const&) = delete;
 };
 
 #endif // DEVICEMANAGER_H
