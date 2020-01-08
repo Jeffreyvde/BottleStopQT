@@ -4,6 +4,7 @@
 #include <qstring.h>
 #include <QObject>
 #include <QTimer>
+#include <QJsonObject>
 
 #ifdef __arm__
 #include <wiringPi.h>
@@ -16,7 +17,7 @@ class Pump : public QObject
     Q_OBJECT
 public:
     explicit Pump(QString name, int powerPin, int PWMPin, int flowrate, QObject *parent = nullptr);
-
+    explicit Pump(QJsonObject pump, QObject *parent = nullptr);
 public:
     ~Pump();
 

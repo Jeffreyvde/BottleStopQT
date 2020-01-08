@@ -17,6 +17,13 @@ Pump::Pump(QString name, int powerPin, int PWMPin, int flowrate, QObject *parent
 
     this->flowrate = flowrate;
 }
+
+//Pump consturctor from json
+Pump::Pump(QJsonObject pump, QObject *parent): QObject(parent)
+{
+
+}
+
 Pump::~Pump(){}
 
 //Pumps the specific amount which is given.
