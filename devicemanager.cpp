@@ -13,6 +13,10 @@ void DeviceManager::initializeDevice()
     foreach (const QJsonValue & value, json)
     {
         QJsonObject obj = value.toObject();
+
+        Pump* pump = new Pump(obj["pump"].toObject());
+        pumpMap.insert(std::pair<int, Pump*>(pump->getIngredientId(), pump));
+
         beverages.push_back(new Beverage(obj["beverage"].toObject()));
     }
 }
