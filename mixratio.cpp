@@ -1,9 +1,9 @@
 #include "mixratio.h"
 #include "devicemanager.h"
 
-MixRatio::MixRatio(int pumpID, double ratio)
+MixRatio::MixRatio(int ingredientID, double ratio)
 {
     this->ratio = ratio;
-    pump = DeviceManager::getInstance().getPump(pumpID);
+    pump = DeviceManager::getInstance().getPump(ingredientID);
 }
 
