@@ -18,15 +18,16 @@ class Pump : public QObject
 public:
     explicit Pump(QString name, int powerPin, int PWMPin, int flowrate, QObject *parent = nullptr);
     explicit Pump(QJsonObject pump, QObject *parent = nullptr);
-public:
+
     ~Pump();
 
-public:
     void pumpAmount(int amountInML);
     void activate();
     void setPWM(int PWM);
 
     bool getActive();
+
+    int getIngredientId() const;
 
 public slots:
     void deactivate();
@@ -37,7 +38,13 @@ private:
     int PWMPin;     //PWM pin of the pump.
     int flowrate;   //Flowrate in ML/minute.
 
+    int ingredientId; //The specific ingredient
+    int ID;
+
+
+
     QString name;   //Name of the pump.
+    QString type;   //Type of the pump
 
     bool active;    //Pump active status.
 
@@ -45,6 +52,8 @@ private:
 
     float calculateFlowrate();
     float calculateActivationTimeForAmount(int amountInML);
+
+    void getPins();
 };
 
 #endif // PUMP_H
