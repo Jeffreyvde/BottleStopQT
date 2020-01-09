@@ -9,12 +9,7 @@ Pump::Pump(QString name, int powerPin, int PWMPin, int flowrate, QObject *parent
     this->powerPin = powerPin;
     this->PWMPin = PWMPin;
 
-#ifdef __arm__
-    pinMode(powerPin, OUTPUT);
-
-    pinMode(PWMPin, OUTPUT);
-    softPwmCreate(PWMPin, 0, maxPWM);
-#endif
+    initializePins();
 
     this->flowrate = flowrate;
 }
@@ -30,6 +25,17 @@ Pump::Pump(QJsonObject pump, QObject *parent): QObject(parent)
 }
 
 Pump::~Pump(){}
+
+//Initialize pins (power pins as OUTPUT and PWM for pwm pin)
+void Pump::initializePins()
+{
+#ifdef __arm__
+    pinMode(powerPin, OUTPUT);
+
+    pinMode(PWMPin, OUTPUT);
+    softPwmCreate(PWMPin, 0, maxPWM);
+#endif
+}
 
 //Pumps the specific amount which is given.
 void Pump::pumpAmount(int amountInML)
@@ -99,15 +105,16 @@ float Pump::calculateFlowrate()
     return flowrate * flowrateMultiplier;
 }
 
+//Returns if the pump is active
 bool Pump::getActive()
 {
   return active;
 }
 
+//Get the pins from the api
 void Pump::getPins()
 {
     QJsonArray pins = DeviceManager::getInstance().getApi()->callApi("/pump/" + QString::number(ID) + "/pins").array();
-    qDebug() << "/pump/" + QString::number(ID) + "/pins";
     for(int i = 0; i < pins.size(); i++){
         QJsonObject pinData = pins[i].toObject()["pin"].toObject();
 
@@ -118,9 +125,6 @@ void Pump::getPins()
             this->PWMPin = pin;
         else if(value == "OUTPUT")
             this->powerPin = pin;
-
-
     }
-    qDebug() << this->powerPin;
-    qDebug() << PWMPin;
+    initializePins();
 }

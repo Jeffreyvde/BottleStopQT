@@ -54,6 +54,8 @@ private:
     float calculateActivationTimeForAmount(int amountInML);
 
     void getPins();
+    void initializePins();
+
 };
 
 #endif // PUMP_H
