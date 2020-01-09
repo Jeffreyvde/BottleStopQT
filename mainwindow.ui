@@ -91,6 +91,7 @@
       <string notr="true">background: transparent;
 background-color: rgb(53, 193, 192);
 border: none;
+outline: 0;
 </string>
      </property>
      <property name="text">
