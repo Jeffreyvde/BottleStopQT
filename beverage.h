@@ -13,7 +13,7 @@ public:
 
     QString getName();
     double getCostPerML();
-    std::vector<MixRatio> getRatios();
+    std::vector<MixRatio*> getRatios();
     QString getUrl() const;
 
 private:
@@ -21,7 +21,7 @@ private:
     QString name;
     QString url;
     double costPerML;
-    std::vector<MixRatio> ratios;
+    std::vector<MixRatio*> ratios;
 
     void getRecipe();
 };

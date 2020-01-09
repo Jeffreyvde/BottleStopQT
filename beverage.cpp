@@ -23,12 +23,12 @@ Beverage::Beverage(int id, QString name, QString url, double costPerML)
 // Initialize beverage recipe(mix)
 void Beverage::getRecipe()
 {
-    QJsonArray ingredients = DeviceManager::getInstance().getApi()->callApi("/beverage/" + QString(id) + "/recipe").array();
+    QJsonArray ingredients = DeviceManager::getInstance().getApi()->callApi("/beverage/" + QString::number(id) + "/recipe").array();
 
     for(int i = 0; i < ingredients.size(); i++){
         QJsonObject mix = ingredients[i].toObject();
 
-        MixRatio mixRatio(mix["ingredientId"].toInt(), mix["ratio"].toDouble());
+        MixRatio* mixRatio = new MixRatio(mix["ingredientId"].toInt(), mix["ratio"].toDouble());
         ratios.push_back(mixRatio);
     }
 }
@@ -46,7 +46,7 @@ double Beverage::getCostPerML()
 }
 
 // Return all available recipe(mix) for beverage
-std::vector<MixRatio> Beverage::getRatios()
+std::vector<MixRatio*> Beverage::getRatios()
 {
     return ratios;
 }
