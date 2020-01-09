@@ -7,7 +7,7 @@ ApiService::ApiService(QString baseURL)
 }
 
 //Call the specific api
-QJsonDocument ApiService::callApi(QString extension)
+QJsonDocument ApiService::getRequestApi(QString extension)
 {
     QUrl url(baseURL + extension);
     QNetworkRequest request(url);
