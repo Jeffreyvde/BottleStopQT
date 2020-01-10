@@ -9,7 +9,7 @@ DeviceManager::DeviceManager()
 
 void DeviceManager::initializeDevice()
 {
-    QJsonArray json = api->callApi("/machine/availability/rRksBrcCH9SjyyKR3UhgsKZQbPE5tMJJ").array();
+    QJsonArray json = api->getRequestApi("/machine/availability/rRksBrcCH9SjyyKR3UhgsKZQbPE5tMJJ").array();
     foreach (const QJsonValue & value, json)
     {
         QJsonObject obj = value.toObject();
