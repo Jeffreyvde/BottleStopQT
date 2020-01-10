@@ -11,6 +11,8 @@ void BottleState::handle()
     switch (state)
     {
         case Scanning:
+            connecting();
+            break;
         case Connected:
             listen();
             break;
@@ -24,8 +26,13 @@ void BottleState::handle()
 void BottleState::handle(QString data)
 {
     addData(data);
-    if(data.contains('\n'))
+    if(serialData.contains(start) && serialData.contains(end))
+    {
+        serialData = getSerial(serialData);
+        qDebug() << serialData;
         handle();
+        serialData = "";
+    }
 
 }
 
@@ -40,25 +47,34 @@ void BottleState::addData(QString data)
     }
 }
 
+void BottleState::connecting()
+{
+    if(!serialData.contains(split))
+    {
+        return;
+    }
+    int splitIndex = serialData.indexOf(split);
+
+    QString request = serialData.mid(0, splitIndex);
+    QString value = serialData.mid(splitIndex + 1, serialData.length() - splitIndex);
+
+    if(request == idRequest)
+    {
+        state = Connected;
+        DeviceManager::getInstance().setId(value);
+        qDebug() << "Connected";
+    }
+
+}
+
 //Listen if the received data is an id or cancel event
 void BottleState::listen()
-{
-    //Remove /r and /ne2
-    serialData.chop(2);
-
-
-    if(serialData.length() == idLength)
+{   if(serialData == cancelRequest)
     {
-        qDebug() << "Connected";
-        state = Connected;
-        DeviceManager::getInstance().setId(serialData);
-    }
-    else if(serialData == cancelRequest)
-    {
+        qDebug() << "Cancelling";
         state = Canceling;
         handle();
     }
-    serialData = "";
 }
 
 //Cancel all pumps
@@ -66,8 +82,17 @@ void BottleState::cancel()
 {
     for (auto const& mapIndex : DeviceManager::getInstance().getPumpMap())
     {
-        mapIndex.second->deactivate();
+         mapIndex.second->deactivate();
     }
-    qDebug() << "Cancel";
+    qDebug() << "Cancelled";
     state = Scanning;
+}
+
+// Remove start and end chars
+QString BottleState::getSerial(QString serial)
+{
+    int startPos = serial.indexOf(start) + 1;
+    int endPos = serial.indexOf(end);
+    int length = endPos - startPos;
+    return serial.mid(startPos, length);
 }
