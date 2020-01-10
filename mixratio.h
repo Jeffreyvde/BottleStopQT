@@ -9,7 +9,7 @@
 class MixRatio
 {
 public:
-    MixRatio(QString pumpName, double ratio);
+    MixRatio(int pumpID, double ratio);
     double ratio;
     Pump *pump;
 };

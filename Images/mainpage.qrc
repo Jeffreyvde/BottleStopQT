@@ -2,5 +2,14 @@
     <qresource prefix="/beverages">
         <file>Beverages/Water.png</file>
         <file>Beverages/Sprite.png</file>
+        <file>Beverages/CarvanCevitam.png</file>
+        <file>Beverages/Cola.png</file>
+        <file>Beverages/DrPepper.png</file>
+        <file>Beverages/Fanta.png</file>
+        <file>Beverages/Lipton.png</file>
+        <file>Beverages/RedBull.png</file>
+        <file>Beverages/LemonadeStrawberry.png</file>
+        <file>Beverages/LemonadeTropical.png</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

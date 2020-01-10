@@ -91,6 +91,7 @@
       <string notr="true">background: transparent;
 background-color: rgb(53, 193, 192);
 border: none;
+outline: 0;
 </string>
      </property>
      <property name="text">
@@ -168,7 +169,8 @@ border: none;
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">border: none</string>
+          <string notr="true">border: none;
+outline: 0;</string>
          </property>
          <layout class="QGridLayout" name="grid">
           <property name="sizeConstraint">

@@ -63,7 +63,7 @@ void BottleState::listen()
 
 //Cancel all pumps
 void BottleState::cancel()
-{  
+{
     for (auto const& mapIndex : DeviceManager::getInstance().getPumpMap())
     {
         mapIndex.second->deactivate();

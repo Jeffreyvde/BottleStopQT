@@ -1,3 +1,4 @@
+#include "devicemanager.h"
 #include "pump.h"
 
 //Constructor and destructor for the Pump class. Initializes the variables.
@@ -8,16 +9,33 @@ Pump::Pump(QString name, int powerPin, int PWMPin, int flowrate, QObject *parent
     this->powerPin = powerPin;
     this->PWMPin = PWMPin;
 
+    initializePins();
+
+    this->flowrate = flowrate;
+}
+
+//Pump consturctor from json
+Pump::Pump(QJsonObject pump, QObject *parent): QObject(parent)
+{
+   name = pump["pumpName"].toString();
+   type = pump["pumpType"].toString();
+   ID = pump["pumpId"].toInt();
+
+   getPins();
+}
+
+Pump::~Pump(){}
+
+//Initialize pins (power pins as OUTPUT and PWM for pwm pin)
+void Pump::initializePins()
+{
 #ifdef __arm__
     pinMode(powerPin, OUTPUT);
 
     pinMode(PWMPin, OUTPUT);
     softPwmCreate(PWMPin, 0, maxPWM);
 #endif
-
-    this->flowrate = flowrate;
 }
-Pump::~Pump(){}
 
 //Pumps the specific amount which is given.
 void Pump::pumpAmount(int amountInML)
@@ -55,6 +73,11 @@ void Pump::deactivate()
 
 }
 
+int Pump::getIngredientId() const
+{
+    return ingredientId;
+}
+
 //Sets a specific PWM to adjust the flowrate.
 void Pump::setPWM(int PWM)
 {
@@ -82,7 +105,26 @@ float Pump::calculateFlowrate()
     return flowrate * flowrateMultiplier;
 }
 
+//Returns if the pump is active
 bool Pump::getActive()
 {
   return active;
+}
+
+//Get the pins from the api
+void Pump::getPins()
+{
+    QJsonArray pins = DeviceManager::getInstance().getApi()->callApi("/pump/" + QString::number(ID) + "/pins").array();
+    for(int i = 0; i < pins.size(); i++){
+        QJsonObject pinData = pins[i].toObject()["pin"].toObject();
+
+        QString value = pinData["pinMode"].toString();
+        int pin = pinData["pinNumber"].toString().toInt();
+
+        if(value == "PWM")
+            this->PWMPin = pin;
+        else if(value == "OUTPUT")
+            this->powerPin = pin;
+    }
+    initializePins();
 }
