@@ -28,6 +28,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         beverage.cpp \
+        fillpage.cpp \
         main.cpp \
         mainwindow.cpp \
         mixratio.cpp \
@@ -43,6 +44,7 @@ SOURCES += \
 
 HEADERS += \
         beverage.h \
+        fillpage.h \
         mainwindow.h \
         mixratio.h \
         pump.h \
@@ -56,6 +58,7 @@ HEADERS += \
         apiservice.h
 
 FORMS += \
+        fillpage.ui \
         mainwindow.ui
 
     INCLUDEPATH += /opt/qt5pi/sysroot/usr/include
@@ -71,5 +74,6 @@ DISTFILES += \
     tmp
 
 RESOURCES += \
+    Images/FillPage.qrc \
     Images/mainpage.qrc
 
