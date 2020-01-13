@@ -58,7 +58,7 @@ QString Beverage::getUrl() const
 }
 
 //Mix the beverage
-void Beverage::mix(int amount)
+void Beverage::mix(int amountInML)
 {
     for(int i = 0; i < ratios.size(); i++)
     {
