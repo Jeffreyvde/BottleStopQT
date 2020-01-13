@@ -20,7 +20,7 @@ public:
     QJsonDocument deleteRequestApi(QString extension);
 
 private:
-    QByteArray readAll(QNetworkReply *reply);
+    QJsonDocument readAll(QNetworkReply *reply);
 
     QString baseURL;
 
