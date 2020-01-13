@@ -60,9 +60,11 @@ QString Beverage::getUrl() const
 //Mix the beverage
 void Beverage::mix(int amountInML)
 {
+    int amountRatio;
     for(int i = 0; i < ratios.size(); i++)
     {
-        ratios[i]->pump->pumpAmount(amount);
+        amountRatio =  amountInML * ratios[i]->ratio;
+        ratios[i]->pump->pumpAmount(amountRatio);
     }
 }
 
