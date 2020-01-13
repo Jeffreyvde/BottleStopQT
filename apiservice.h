@@ -15,7 +15,7 @@ class ApiService
 public:
     ApiService(QString baseURL);
 
-    QJsonDocument callApi(QString extension);
+    QJsonDocument getRequestApi(QString extension);
 
 
 private:

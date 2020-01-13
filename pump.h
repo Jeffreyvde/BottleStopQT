@@ -33,7 +33,8 @@ public slots:
     void deactivate();
 
 private:
-    int PWM;        //PWM for the pumps.
+    const int maxPWM = 100;
+    int PWM = maxPWM;        //PWM for the pumps.
     int powerPin;   //Powerpin of the pump.
     int PWMPin;     //PWM pin of the pump.
     int flowrate;   //Flowrate in ML/minute.
@@ -48,7 +49,6 @@ private:
 
     bool active;    //Pump active status.
 
-    const int maxPWM = 100;
 
     float calculateFlowrate();
     float calculateActivationTimeForAmount(int amountInML);

@@ -16,6 +16,8 @@ public:
     std::vector<MixRatio*> getRatios();
     QString getUrl() const;
 
+    void mix(int amountInML);
+
 private:
     int id;
     QString name;

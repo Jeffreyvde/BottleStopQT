@@ -25,7 +25,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_waterButton_clicked()
 {
-        DeviceManager::getInstance().getBeverage(0);
+        Beverage* beverage = DeviceManager::getInstance().getBeverage(0);
+        beverage->mix(1000);
 }
 
 // Spawn buttons
