@@ -21,7 +21,12 @@ Pump::Pump(QJsonObject pump, QObject *parent): QObject(parent)
    type = pump["pumpType"].toString();
    ID = pump["pumpId"].toInt();
    ingredientId = pump["ingredientId"].toInt();
+
+   //TODO add flowrate
    flowrate = 10000;
+
+   //TODO add PWM
+
    getPins();
 }
 
