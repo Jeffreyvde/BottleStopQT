@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "fillpage.h"
+
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -25,7 +27,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_waterButton_clicked()
 {
-        DeviceManager::getInstance().getBeverage(0);
+    DeviceManager::getInstance().getBeverage(0);
+
+    FillPage *fillPage = new FillPage();
+    fillPage->show();
+    this->hide();
 }
 
 // Spawn buttons
@@ -38,7 +44,11 @@ void MainWindow::spawnButtons()
      for(uint i = 1; i < beverages.size() ; i++)
      {
          int offset = (spawnLeft) ? 0 : 1;
+
          ui->grid->addWidget(factory.createBeverage(*beverages[i]), i - offset, offset);
          spawnLeft = !spawnLeft;
+         connect(ui->grid->addWidget(factory.createBeverage(*beverages[i])), SIGNAL(clicked()),
+                 ui-> , SLOT(setText(*beverages[i])))
+
      }
 }

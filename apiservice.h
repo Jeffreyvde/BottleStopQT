@@ -15,10 +15,13 @@ class ApiService
 public:
     ApiService(QString baseURL);
 
-    QJsonDocument callApi(QString extension);
-
+    QJsonDocument getRequestApi(QString extension);
+    QJsonDocument postRequestApi(QString extension, QJsonObject body);
+    QJsonDocument deleteRequestApi(QString extension);
 
 private:
+    QByteArray readAll(QNetworkReply *reply);
+
     QString baseURL;
 
     QNetworkAccessManager* instance;

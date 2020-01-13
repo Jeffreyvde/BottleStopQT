@@ -1,5 +1,8 @@
 <RCC>
-    <qresource prefix="/background">
-        <file>Background/background.png</file>
+    <qresource prefix="/Images">
+        <file>FillPageImage/Arrow.png</file>
+        <file>FillPageImage/background.png</file>
+        <file>FillPageImage/FavouriteNotSelected.png</file>
+        <file>FillPageImage/FavouriteSelected.png</file>
     </qresource>
 </RCC>

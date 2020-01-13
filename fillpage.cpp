@@ -12,3 +12,14 @@ FillPage::~FillPage()
 {
     delete ui;
 }
+
+void FillPage::on_backBtn_clicked()
+{
+    mainWindow->show();
+    this->close();
+}
+
+void FillPage::on_favoriteBtn_clicked()
+{
+
+}

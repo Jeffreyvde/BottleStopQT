@@ -26,21 +26,81 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-image: url(:/background/Background/background.png);</string>
+   <string notr="true">background-image: url(:/Images/FillPageImage/background.png);</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="backBtn">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>10</y>
-     <width>88</width>
-     <height>27</height>
+     <x>20</x>
+     <y>20</y>
+     <width>21</width>
+     <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;
+image: url(:/Images/FillPageImage/Arrow.png);
+border: none;
+outline: 0;</string>
+   </property>
    <property name="text">
-    <string>PushButton</string>
+    <string/>
    </property>
   </widget>
+  <widget class="QLabel" name="beverageLbl">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>28</y>
+     <width>801</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;</string>
+   </property>
+   <property name="text">
+    <string>PRESS TO FILL DRINK_NAME</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::PlainText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="favoriteBtn">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>20</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background: transparent;
+image: url(:/Images/FillPageImage/FavouriteNotSelected.png);
+border: none;
+outline: 0;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <zorder>beverageLbl</zorder>
+  <zorder>backBtn</zorder>
+  <zorder>favoriteBtn</zorder>
  </widget>
  <resources/>
  <connections/>

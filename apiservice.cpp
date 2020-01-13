@@ -13,11 +13,41 @@ QJsonDocument ApiService::getRequestApi(QString extension)
     QNetworkRequest request(url);
 
     QNetworkReply *reply = instance->get(request);
+
+    return QJsonDocument::fromJson(readAll(reply));
+}
+
+QJsonDocument ApiService::postRequestApi(QString extension, QJsonObject body)
+{
+    QUrl url(baseURL + extension);
+    QNetworkRequest request(url);
+
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    QNetworkReply *reply = instance->post(request, QJsonDocument(body).toJson());
+
+    return QJsonDocument::fromJson(readAll(reply));
+}
+
+QJsonDocument ApiService::deleteRequestApi(QString extension)
+{
+    QUrl url(baseURL + extension);
+    QNetworkRequest request(url);
+
+    QNetworkReply *reply = instance->deleteResource(request);
+
+    return QJsonDocument::fromJson(readAll(reply));
+}
+
+QByteArray ApiService::readAll(QNetworkReply *reply)
+{
     while (!reply->isFinished())
     {
         qApp->processEvents();
     }
 
     QByteArray response_data = reply->readAll();
-    return QJsonDocument::fromJson(response_data);
+    reply->deleteLater();
+
+    return response_data;
 }
