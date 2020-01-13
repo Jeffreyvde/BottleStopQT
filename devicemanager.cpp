@@ -69,6 +69,16 @@ Beverage* DeviceManager::getBeverage(int beverageIndex)
 //Setter for ID
 bool DeviceManager::setUser(const QString &value)
 {
-    return false;
+    try
+    {
+        QJsonObject json = api->getRequestApi("/user/bottle/" + value).object();
+         activeUser = new User(json);
+         return true;
+    }
+    catch(const std::exception& e)
+    {
+        qDebug() << e.what();
+        return false;
+    }
 }
 
