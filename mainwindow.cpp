@@ -47,8 +47,8 @@ void MainWindow::spawnButtons()
 
          ui->grid->addWidget(factory.createBeverage(*beverages[i]), i - offset, offset);
          spawnLeft = !spawnLeft;
-         connect(ui->grid->addWidget(factory.createBeverage(*beverages[i])), SIGNAL(clicked()),
-                 ui-> , SLOT(setText(*beverages[i])))
+//         connect(ui->grid->addWidget(factory.createBeverage(*beverages[i])), SIGNAL(clicked()),
+//                 ui-> , SLOT(setText(*beverages[i])))
 
      }
 }

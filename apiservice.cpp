@@ -14,7 +14,7 @@ QJsonDocument ApiService::getRequestApi(QString extension)
 
     QNetworkReply *reply = instance->get(request);
 
-    return QJsonDocument::fromJson(readAll(reply));
+    return readAll(reply);
 }
 
 QJsonDocument ApiService::postRequestApi(QString extension, QJsonObject body)
@@ -26,7 +26,7 @@ QJsonDocument ApiService::postRequestApi(QString extension, QJsonObject body)
 
     QNetworkReply *reply = instance->post(request, QJsonDocument(body).toJson());
 
-    return QJsonDocument::fromJson(readAll(reply));
+    return readAll(reply);
 }
 
 QJsonDocument ApiService::deleteRequestApi(QString extension)
@@ -36,10 +36,10 @@ QJsonDocument ApiService::deleteRequestApi(QString extension)
 
     QNetworkReply *reply = instance->deleteResource(request);
 
-    return QJsonDocument::fromJson(readAll(reply));
+    return readAll(reply);
 }
 
-QByteArray ApiService::readAll(QNetworkReply *reply)
+QJsonDocument ApiService::readAll(QNetworkReply *reply)
 {
     while (!reply->isFinished())
     {
@@ -49,5 +49,5 @@ QByteArray ApiService::readAll(QNetworkReply *reply)
     QByteArray response_data = reply->readAll();
     reply->deleteLater();
 
-    return response_data;
+    return QJsonDocument::fromJson(response_data);
 }
