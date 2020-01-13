@@ -67,7 +67,7 @@ void BottleState::connecting()
 
 }
 
-//Listen if the received data is an id or cancel event
+// Listen if the received data is an id or cancel event
 void BottleState::listen()
 {   if(serialData == cancelRequest)
     {
@@ -77,14 +77,11 @@ void BottleState::listen()
     }
 }
 
-//Cancel all pumps
+// Cancel all pumps
 void BottleState::cancel()
 {
-    for (auto const& mapIndex : DeviceManager::getInstance().getPumpMap())
-    {
-         mapIndex.second->deactivate();
-    }
     qDebug() << "Cancelled";
+    DeviceManager::getInstance().cancel();
     state = Scanning;
 }
 

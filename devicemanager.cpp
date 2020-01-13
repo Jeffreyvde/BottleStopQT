@@ -7,6 +7,7 @@ DeviceManager::DeviceManager()
     api = new ApiService("https://bottlestopapi.azurewebsites.net");
 }
 
+// Intitalize the device
 void DeviceManager::initializeDevice()
 {
     QJsonArray json = api->getRequestApi("/machine/availability/rRksBrcCH9SjyyKR3UhgsKZQbPE5tMJJ").array();
@@ -21,6 +22,7 @@ void DeviceManager::initializeDevice()
     }
 }
 
+//Getter for the api service
 ApiService *DeviceManager::getApi() const
 {
     return api;
@@ -37,16 +39,11 @@ std::vector<Beverage*> DeviceManager::getBeverages() const
 {
     return pumpMap;
 }
-//Getter for ID
+
+ //Getter for ID
 QString DeviceManager::getId() const
 {
     return bottleID;
-}
-
-//Setter for ID
-void DeviceManager::setId(const QString &value)
-{
-    bottleID = value;
 }
 
 //Getter for serial connection
@@ -65,5 +62,22 @@ Pump* DeviceManager::getPump(int pumpIndex)
 Beverage* DeviceManager::getBeverage(int beverageIndex)
 {
     return beverages[beverageIndex];
+}
+
+//Setter for ID
+void DeviceManager::setId(const QString &value)
+{
+    bottleID = value;
+    emit bottlePlaced();
+}
+
+//Cancel event for the device
+void DeviceManager::cancel()
+{
+    for (auto const& mapIndex : getPumpMap())
+    {
+         mapIndex.second->deactivate();
+    }
+    emit cancelReceived();
 }
 
