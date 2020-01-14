@@ -7,6 +7,7 @@
 #include "RFID/serialwrapper.h"
 #include "apiservice.h"
 #include "RFID/user.h"
+#include "RFID/bottlesignals.h"
 #include <QJsonObject>
 
 class DeviceManager
@@ -22,23 +23,19 @@ public:
 
     SerialWrapper* getSerialConnection();
 
-    QString getId() const;
     std::map<int, Pump*> getPumpMap() const;
     std::vector<Beverage *> getBeverages() const;
+    BottleSignals *getBottleSingals() const;
 
     ApiService *getApi() const;
 
     Pump* getPump(int ingredientID);
     Beverage* getBeverage(int beverageIndex);
 
-    void setId(const QString &value);
-    void cancel();
+    bool setUser(const QString &value);
 
     void initializeDevice();    
 
-signals:
-    void bottlePlaced();
-    void bottleRemoved();
 
 private:
     DeviceManager();
@@ -49,7 +46,7 @@ private:
 
     ApiService* api;
 
-    QString bottleID;
+    BottleSignals* bottleSignals;
     User* activeUser;
 
 };

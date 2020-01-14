@@ -1,6 +1,6 @@
 #include "user.h"
 
-User::User(QString ID, QString name, float balance, Bottle* bottle)
+User::User(int ID, QString name, float balance, Bottle* bottle)
 {
     this->ID = ID;
     this->name = name;
@@ -8,12 +8,23 @@ User::User(QString ID, QString name, float balance, Bottle* bottle)
     this->bottle = bottle;
 }
 
-User::User(QString ID)
+User::User(int ID)
 {
     //TODO Api request
 }
 
-QString User::getID() const
+User::User(QJsonObject json)
+{
+    bottle = new Bottle(json["bottle"].toObject());
+
+    json = json["user"].toObject();
+
+    ID = json["userId"].toInt();
+    name = json["firstName"].toString();
+    balance = json["balance"].toInt();
+}
+
+int User::getID() const
 {
     return ID;
 }

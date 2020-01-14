@@ -47,6 +47,7 @@ void BottleState::addData(QString data)
     }
 }
 
+// Check if the data received is an ID
 void BottleState::connecting()
 {
     if(!serialData.contains(split))
@@ -61,7 +62,7 @@ void BottleState::connecting()
     if(request == idRequest)
     {
         state = Connected;
-        DeviceManager::getInstance().setId(value);
+        DeviceManager::getInstance().getBottleSingals()->placeBottle(value);
         qDebug() << "Connected";
     }
 
@@ -81,7 +82,7 @@ void BottleState::listen()
 void BottleState::cancel()
 {
     qDebug() << "Cancelled";
-    DeviceManager::getInstance().cancel();
+    DeviceManager::getInstance().getBottleSingals()->removeBottle();
     state = Scanning;
 }
 
