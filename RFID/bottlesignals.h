@@ -15,8 +15,6 @@ public:
 signals:
     void bottlePlaced();
     void bottleRemoved();
-
-public slots:
 };
 
 #endif // BOTTLESIGNALS_H
