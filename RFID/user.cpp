@@ -1,5 +1,4 @@
 #include "user.h"
-#include <QDebug>
 
 User::User(int ID, QString name, float balance, Bottle* bottle)
 {
@@ -23,8 +22,6 @@ User::User(QJsonObject json)
     ID = json["userId"].toInt();
     name = json["firstName"].toString();
     balance = json["balance"].toInt();
-    qDebug() << balance;
-    qDebug() << ID;
 }
 
 int User::getID() const

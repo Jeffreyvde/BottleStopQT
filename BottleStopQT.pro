@@ -31,7 +31,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         mixratio.cpp \
-        pump.cpp \ 
+        pump.cpp \
         devicemanager.cpp \
         RFID/bottlehandler.cpp \
         RFID/serialwrapper.cpp \
