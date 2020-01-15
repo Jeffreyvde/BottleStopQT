@@ -40,7 +40,8 @@ SOURCES += \
         beveragefactory.cpp \
         RFID/bottlestate.cpp \
         apiservice.cpp \
-        RFID/bottlesignals.cpp
+        RFID/bottlesignals.cpp \
+        staticscreensaver.cpp
 
 HEADERS += \
         beverage.h \
@@ -55,10 +56,12 @@ HEADERS += \
         beveragefactory.h \
         RFID/bottlestate.h \
         apiservice.h \
-        RFID/bottlesignals.h
+        RFID/bottlesignals.h \
+        staticscreensaver.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    staticscreensaver.ui
 
     INCLUDEPATH += /opt/qt5pi/sysroot/usr/include
     LIBS += -L/opt/qt5pi/sysroot/usr/lib -lwiringPi
