@@ -42,14 +42,26 @@ void MainWindow::spawnButtons()
     BeverageFactory factory("QPushButton{border: none}");
 
     bool spawnLeft = true;
-     std::vector<Beverage*> beverages = DeviceManager::getInstance().getBeverages();
-     for(uint i = 1; i < beverages.size() ; i++)
-     {
-         int offset = (spawnLeft) ? 0 : 1;
 
-         ui->grid->addWidget(factory.createBeverage(*beverages[i]), i - offset, offset);
-         spawnLeft = !spawnLeft;
-         FillPage
+    std::vector<Beverage*> beverages = DeviceManager::getInstance().getBeverages();
+    int offset = 0;
 
-     }
+
+    for(uint i = 1; i < beverages.size() ; i++)
+    {
+        offset = (spawnLeft) ? 0 : 1;
+        QPushButton* button = factory.createBeverage(*beverages[i]);
+
+        connect(button, &QPushButton::clicked, [=] { pumpBeverage(beverages[i]); });
+
+        ui->grid->addWidget(button, i - offset, offset);
+        spawnLeft = !spawnLeft;
+    }
+}
+
+//Pump a beverage
+void MainWindow::pumpBeverage(Beverage *beverage)
+{
+    beverage->mix(DeviceManager::getInstance().getActiveUser()->getBottle()->getSizeML());
+    beverage->mix(500);
 }

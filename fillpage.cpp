@@ -6,6 +6,7 @@ FillPage::FillPage(QWidget *parent) :
     ui(new Ui::FillPage)
 {
     ui->setupUi(this);
+
 }
 
 FillPage::~FillPage()
@@ -16,18 +17,12 @@ FillPage::~FillPage()
 void FillPage::on_backBtn_clicked()
 {
     mainWindow->show();
-    this->close();
+    this->hide();
 }
 
 void FillPage::on_favoriteBtn_clicked()
 {
-
-    // get user_id from user class
-
-    QString uid = QString::number(user->getID());
-
-
-    QString bevName = beverage->getName();
+    QString uid = QString::number(DeviceManager::getInstance().getActiveUser()->getID());
     QString bid = QString::number(beverage->getId());
 
     if (favoriteStatusCheck(uid, bid)){
@@ -64,4 +59,5 @@ bool FillPage::favoriteStatusCheck(QString uid, QString bid)
 void FillPage::setBeverage(Beverage *value)
 {
     beverage = value;
+    ui->beverageLbl->setText("PRESS TO FILL "+ beverage->getName());
 }

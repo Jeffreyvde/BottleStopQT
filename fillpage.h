@@ -19,6 +19,9 @@ public:
     explicit FillPage(QWidget *parent = nullptr);
     ~FillPage();
 
+
+    void setBeverage(Beverage *value);
+
 private slots:
     void on_backBtn_clicked();
 
