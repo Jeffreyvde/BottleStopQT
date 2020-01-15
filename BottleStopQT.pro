@@ -73,8 +73,10 @@ FORMS += \
 
 
 DISTFILES += \
-    tmp
+    tmp \
+    FontLoader.qml
 
 RESOURCES += \
-    Images/mainpage.qrc
+    Images/mainpage.qrc \
+    customfonts.qrc
 
