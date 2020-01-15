@@ -22,28 +22,19 @@ void FillPage::on_backBtn_clicked()
 
 void FillPage::on_favoriteBtn_clicked()
 {
-    QString uid = QString::number(DeviceManager::getInstance().getActiveUser()->getID());
-    QString bid = QString::number(beverage->getId());
-
-    if (favoriteStatusCheck(uid, bid)){
+    if (isFavorite){
         QString url = "/user/favorite/delete/" + uid + "/" + bid;
-        QJsonArray statusCode = DeviceManager::getInstance()
-                .getApi()->deleteRequestApi("/user/favorite/delete/").array();
-
-        QPixmap backImg(":/Images/FillPageImage/FavouriteNotSelected.png");
-        ui->favoriteBtn->setIcon(backImg);
-
-    } else {
-        QJsonObject body;
-        body.insert("userId", uid);
-        body.insert("beverageId", bid);
-
-        QJsonArray statusCode = DeviceManager::getInstance()
-                .getApi()->postRequestApi("/user/add", body).array();
-
-        QPixmap backImg(":/Images/FillPageImage/FavouriteSelected.png");
-        ui->favoriteBtn->setIcon(backImg);
+        DeviceManager::getInstance()
+                .getApi()->deleteRequestApi("/user/favorite/delete/");
+        return;
     }
+
+    QJsonObject body;
+    body.insert("userId", uid);
+    body.insert("beverageId", bid);
+
+    DeviceManager::getInstance().getApi()->postRequestApi("/user/add", body);
+
 }
 
 bool FillPage::favoriteStatusCheck(QString uid, QString bid)
@@ -60,4 +51,18 @@ void FillPage::setBeverage(Beverage *value)
 {
     beverage = value;
     ui->beverageLbl->setText("PRESS TO FILL "+ beverage->getName());
+    uid = QString::number(DeviceManager::getInstance().getActiveUser()->getID());
+    bid = QString::number(beverage->getId());
+
+    isFavorite = favoriteStatusCheck(uid, bid);
+
+    changeFavBackground(isFavorite);
+
+
+}
+
+void FillPage::changeFavBackground(bool value)
+{
+    QPixmap backImg(value ? ":/Images/FillPageImage/FavouriteSelected.png" : ":/Images/FillPageImage/FavouriteNotSelected.png");
+    ui->favoriteBtn->setIcon(backImg);
 }

@@ -101,10 +101,10 @@ outline: 0;</string>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>200</y>
-     <width>361</width>
-     <height>211</height>
+     <x>120</x>
+     <y>130</y>
+     <width>551</width>
+     <height>281</height>
     </rect>
    </property>
    <property name="text">

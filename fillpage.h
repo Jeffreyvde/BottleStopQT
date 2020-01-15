@@ -26,12 +26,20 @@ private slots:
     void on_backBtn_clicked();
 
     void on_favoriteBtn_clicked();
-    bool favoriteStatusCheck(QString uid, QString bid);
+
 private:
     Ui::FillPage *ui;
     MainWindow *mainWindow;
 
+    bool favoriteStatusCheck(QString uid, QString bid);
+    void changeFavBackground(bool value);
+
     Beverage *beverage;
+
+    QString uid;
+    QString bid;
+    bool isFavorite;
+
 };
 
 #endif // FILLPAGE_H

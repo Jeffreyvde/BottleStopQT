@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 MainWindow::~MainWindow()
 {
     delete ui;
+
 }
 
 void MainWindow::on_waterButton_clicked()
@@ -29,11 +30,6 @@ void MainWindow::on_waterButton_clicked()
 
     Beverage* beverage = DeviceManager::getInstance().getBeverage(0);
     beverage->mix(1000);
-
-
-    FillPage *fillPage = new FillPage();
-    fillPage->show();
-    this->hide();
 }
 
 // Spawn buttons
