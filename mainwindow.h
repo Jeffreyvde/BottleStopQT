@@ -30,6 +30,8 @@ private:
 
     void spawnButtons();
 
+    void pumpBeverage(Beverage* beverage);
+
 };
 
 #endif // MAINWINDOW_H

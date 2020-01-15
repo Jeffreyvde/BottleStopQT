@@ -32,7 +32,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         mixratio.cpp \
-        pump.cpp \ 
+        pump.cpp \
         devicemanager.cpp \
         RFID/bottlehandler.cpp \
         RFID/serialwrapper.cpp \
@@ -40,7 +40,8 @@ SOURCES += \
         RFID/bottle.cpp \
         beveragefactory.cpp \
         RFID/bottlestate.cpp \
-        apiservice.cpp
+        apiservice.cpp \
+        RFID/bottlesignals.cpp
 
 HEADERS += \
         beverage.h \
@@ -55,7 +56,8 @@ HEADERS += \
         RFID/bottle.h \
         beveragefactory.h \
         RFID/bottlestate.h \
-        apiservice.h
+        apiservice.h \
+        RFID/bottlesignals.h
 
 FORMS += \
         fillpage.ui \

@@ -7,10 +7,11 @@
 class User
 {
 public:
-    User(QString ID, QString name, float balance, Bottle* bottle);
-    User(QString ID);
+    User(int ID, QString name, float balance, Bottle* bottle);
+    User(int ID);
+    User(QJsonObject json);
 
-    QString getID() const;
+    int getID() const;
     QString getName() const;
     float getBalance() const;
     Bottle *getBottle() const;
@@ -19,7 +20,7 @@ public:
 
 
 private:
-    QString ID;
+    int ID;
     QString name;
     float balance;
     Bottle* bottle;

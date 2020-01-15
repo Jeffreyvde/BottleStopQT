@@ -22,11 +22,19 @@ private:
     QString serialData;
     void addData(QString data);
 
+
+    void connecting();
     void listen();
     void cancel();
 
+    QString getSerial(QString strting);
+
     const QString cancelRequest = "Cancel";
-    const int idLength = 8;
+    const QString idRequest = "ID";
+
+    const char start = '$', end = '=', split = ':';
+
+
 
 };
 

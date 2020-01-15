@@ -20,6 +20,12 @@ Pump::Pump(QJsonObject pump, QObject *parent): QObject(parent)
    name = pump["pumpName"].toString();
    type = pump["pumpType"].toString();
    ID = pump["pumpId"].toInt();
+   ingredientId = pump["ingredientId"].toInt();
+
+   //TODO add flowrate
+   flowrate = 10000;
+
+   //TODO add PWM
 
    getPins();
 }
@@ -31,6 +37,7 @@ void Pump::initializePins()
 {
 #ifdef __arm__
     pinMode(powerPin, OUTPUT);
+    digitalWrite(powerPin, LOW);
 
     pinMode(PWMPin, OUTPUT);
     softPwmCreate(PWMPin, 0, maxPWM);
@@ -40,7 +47,7 @@ void Pump::initializePins()
 //Pumps the specific amount which is given.
 void Pump::pumpAmount(int amountInML)
 {
-    calculateFlowrate();
+    qDebug() << "Active";
     activate();
 
     //Sets the calculated time to miliseconds.
@@ -65,6 +72,7 @@ void Pump::activate()
 //Deactivates the Pump by setting its pin to LOW.
 void Pump::deactivate()
 {
+    qDebug() << "Deactive";
     active = false;
 
 #ifdef __arm__
@@ -114,7 +122,7 @@ bool Pump::getActive()
 //Get the pins from the api
 void Pump::getPins()
 {
-    QJsonArray pins = DeviceManager::getInstance().getApi()->callApi("/pump/" + QString::number(ID) + "/pins").array();
+    QJsonArray pins = DeviceManager::getInstance().getApi()->getRequestApi("/pump/" + QString::number(ID) + "/pins").array();
     for(int i = 0; i < pins.size(); i++){
         QJsonObject pinData = pins[i].toObject()["pin"].toObject();
 
@@ -126,5 +134,7 @@ void Pump::getPins()
         else if(value == "OUTPUT")
             this->powerPin = pin;
     }
+    qDebug() << this->powerPin;
+    qDebug() << this->PWMPin;
     initializePins();
 }

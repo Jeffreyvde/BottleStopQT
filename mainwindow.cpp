@@ -24,10 +24,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::on_waterButton_clicked()
 {
-    DeviceManager::getInstance().getBeverage(0);
+
+    Beverage* beverage = DeviceManager::getInstance().getBeverage(0);
+    beverage->mix(1000);
+
 
     FillPage *fillPage = new FillPage();
     fillPage->show();
@@ -47,8 +49,7 @@ void MainWindow::spawnButtons()
 
          ui->grid->addWidget(factory.createBeverage(*beverages[i]), i - offset, offset);
          spawnLeft = !spawnLeft;
-//         connect(ui->grid->addWidget(factory.createBeverage(*beverages[i])), SIGNAL(clicked()),
-//                 ui-> , SLOT(setText(*beverages[i])))
+         FillPage
 
      }
 }

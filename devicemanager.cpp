@@ -5,11 +5,13 @@ DeviceManager::DeviceManager()
 {
     serialConnection = new SerialWrapper();
     api = new ApiService("https://bottlestopapi.azurewebsites.net");
+    bottleSignals = new BottleSignals();
 }
 
+// Intitalize the device
 void DeviceManager::initializeDevice()
 {
-    QJsonArray json = api->callApi("/machine/availability/rRksBrcCH9SjyyKR3UhgsKZQbPE5tMJJ").array();
+    QJsonArray json = api->getRequestApi("/machine/availability/rRksBrcCH9SjyyKR3UhgsKZQbPE5tMJJ").array();
     foreach (const QJsonValue & value, json)
     {
         QJsonObject obj = value.toObject();
@@ -21,6 +23,13 @@ void DeviceManager::initializeDevice()
     }
 }
 
+//Getter for the bottle signals class
+BottleSignals *DeviceManager::getBottleSingals() const
+{
+    return bottleSignals;
+}
+
+//Getter for the api service
 ApiService *DeviceManager::getApi() const
 {
     return api;
@@ -37,17 +46,7 @@ std::vector<Beverage*> DeviceManager::getBeverages() const
 {
     return pumpMap;
 }
-//Getter for ID
-QString DeviceManager::getId() const
-{
-    return bottleID;
-}
 
-//Setter for ID
-void DeviceManager::setId(const QString &value)
-{
-    bottleID = value;
-}
 
 //Getter for serial connection
 SerialWrapper* DeviceManager::getSerialConnection()
@@ -65,5 +64,21 @@ Pump* DeviceManager::getPump(int pumpIndex)
 Beverage* DeviceManager::getBeverage(int beverageIndex)
 {
     return beverages[beverageIndex];
+}
+
+//Setter for ID
+bool DeviceManager::setUser(const QString &value)
+{
+    try
+    {
+        QJsonObject json = api->getRequestApi("/user/bottle/" + value).object();
+         activeUser = new User(json);
+         return true;
+    }
+    catch(const std::exception& e)
+    {
+        qDebug() << e.what();
+        return false;
+    }
 }
 

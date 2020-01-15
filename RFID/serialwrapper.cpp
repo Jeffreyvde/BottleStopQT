@@ -1,6 +1,6 @@
 #include "serialwrapper.h"
 
-//Setup the serial port and connect on Read Data
+// Setup the serial port and connect on Read Data
 SerialWrapper::SerialWrapper(QObject *parent) : QObject(parent)
 {
 #ifdef __arm__
@@ -9,7 +9,7 @@ SerialWrapper::SerialWrapper(QObject *parent) : QObject(parent)
 #endif
 }
 
-//Slot connect to ready read. Is called when you are able to handle data.
+// Slot connect to ready read. Is called when you are able to handle data.
 void SerialWrapper::onReadData()
 {
 #ifdef __arm__
@@ -18,7 +18,7 @@ void SerialWrapper::onReadData()
 #endif
 }
 
-//Write to the serial port
+// Write to the serial port
 void SerialWrapper::write(const QByteArray& data)
 {
 #ifdef __arm__
@@ -26,7 +26,7 @@ void SerialWrapper::write(const QByteArray& data)
 #endif
 }
 
-//Setup the default serial port
+// Setup the default serial port
 void SerialWrapper::setupSerialPort()
 {
 #ifdef __arm__

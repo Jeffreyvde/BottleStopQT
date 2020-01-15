@@ -98,9 +98,23 @@ outline: 0;</string>
     <string/>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>200</y>
+     <width>361</width>
+     <height>211</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
   <zorder>beverageLbl</zorder>
   <zorder>backBtn</zorder>
   <zorder>favoriteBtn</zorder>
+  <zorder>pushButton</zorder>
  </widget>
  <resources/>
  <connections/>
