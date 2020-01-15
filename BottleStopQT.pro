@@ -9,7 +9,6 @@ QT += core
 QT += network
 QT += serialport
 
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = BottleStopQT
@@ -41,7 +40,7 @@ SOURCES += \
         RFID/bottlestate.cpp \
         apiservice.cpp \
         RFID/bottlesignals.cpp \
-        staticscreensaver.cpp
+        uimanager.cpp
 
 HEADERS += \
         beverage.h \
@@ -57,11 +56,15 @@ HEADERS += \
         RFID/bottlestate.h \
         apiservice.h \
         RFID/bottlesignals.h \
-        staticscreensaver.h
+        uimanager.h
 
 FORMS += \
         mainwindow.ui \
     staticscreensaver.ui
+
+DISTFILES += \
+    tmp
+
 
     INCLUDEPATH += /opt/qt5pi/sysroot/usr/include
     LIBS += -L/opt/qt5pi/sysroot/usr/lib -lwiringPi
