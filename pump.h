@@ -35,11 +35,11 @@ public slots:
 private:
     const int maxPWM = 100;
     int PWM = maxPWM;        //PWM for the pumps.
-    int powerPin;   //Powerpin of the pump.
-    int PWMPin;     //PWM pin of the pump.
-    int flowrate;   //Flowrate in ML/minute.
+    int powerPin;            //Powerpin of the pump.
+    int PWMPin;              //PWM pin of the pump.
+    int flowrate;            //Flowrate in ML/minute.
 
-    int ingredientId; //The specific ingredient
+    int ingredientId;        //The specific ingredient
     int ID;
 
 
