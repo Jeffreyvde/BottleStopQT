@@ -66,6 +66,12 @@ Beverage* DeviceManager::getBeverage(int beverageIndex)
     return beverages[beverageIndex];
 }
 
+//Get the active user
+User *DeviceManager::getActiveUser()
+{
+    return activeUser;
+}
+
 //Setter for ID
 bool DeviceManager::setUser(const QString &value)
 {
