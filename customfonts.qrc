@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/CustomFonts">
+        <file>CustomFonts/BEBAS.ttf</file>
+        <file>CustomFonts/Bebas-Regular.otf</file>
+    </qresource>
+</RCC>
