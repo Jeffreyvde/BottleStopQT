@@ -20,8 +20,8 @@ int main(int argc, char *argv[])
 #endif
 
     bottle = new BottleHandler();
-    manager = new UIManager();
     DeviceManager::getInstance().initializeDevice();
+    manager = new UIManager();
     return a.exec();
 }
 
