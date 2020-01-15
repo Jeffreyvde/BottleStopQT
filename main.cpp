@@ -2,12 +2,14 @@
 #include "mainwindow.h"
 #include "RFID/bottlehandler.h"
 #include "devicemanager.h"
+#include "uimanager.h"
 
 #ifdef __arm__
     #include <wiringPi.h>
 #endif
 
 BottleHandler* bottle;
+UIManager* manager;
 
 int main(int argc, char *argv[])
 {    
@@ -18,10 +20,8 @@ int main(int argc, char *argv[])
 #endif
 
     bottle = new BottleHandler();
+    manager = new UIManager();
     DeviceManager::getInstance().initializeDevice();
-    MainWindow w;
-    w.show();
-
     return a.exec();
 }
 
