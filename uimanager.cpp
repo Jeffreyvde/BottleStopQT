@@ -3,7 +3,7 @@
 
 UIManager::UIManager(QObject *parent) : QObject(parent)
 {
-    mainWindow.show();
+    screenSaver.show();
 
     BottleSignals* signal = DeviceManager::getInstance().getBottleSingals();
 
@@ -14,9 +14,13 @@ UIManager::UIManager(QObject *parent) : QObject(parent)
 void UIManager::onBottlePlaced()
 {
     qDebug() << "Add";
+    screenSaver.hide();
+    mainWindow.show();
 }
 
 void UIManager::onBottleRemoved()
 {
     qDebug() << "Removed";
+    screenSaver.show();
+    mainWindow.hide();
 }

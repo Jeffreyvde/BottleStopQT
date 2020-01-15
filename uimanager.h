@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "mainwindow.h"
+#include "staticscreensaver.h"
 
 class UIManager : public QObject
 {
@@ -16,6 +17,7 @@ public slots:
 
 private:
     MainWindow mainWindow;
+    StaticScreensaver screenSaver;
 };
 
 #endif // UIMANAGER_H
