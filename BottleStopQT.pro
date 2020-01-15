@@ -40,6 +40,7 @@ SOURCES += \
         RFID/bottlestate.cpp \
         apiservice.cpp \
         RFID/bottlesignals.cpp \
+        staticscreensaver.cpp \
         uimanager.cpp
 
 HEADERS += \
@@ -56,11 +57,13 @@ HEADERS += \
         RFID/bottlestate.h \
         apiservice.h \
         RFID/bottlesignals.h \
+        staticscreensaver.h \
         uimanager.h
+
 
 FORMS += \
         mainwindow.ui \
-    staticscreensaver.ui
+        staticscreensaver.ui
 
 DISTFILES += \
     tmp

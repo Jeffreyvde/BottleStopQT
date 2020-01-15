@@ -45,7 +45,6 @@ void Pump::initializePins()
 //Pumps the specific amount which is given.
 void Pump::pumpAmount(int amountInML)
 {
-    qDebug() << "Active";
     activate();
 
     //Sets the calculated time to miliseconds.
@@ -70,7 +69,6 @@ void Pump::activate()
 //Deactivates the Pump by setting its pin to LOW.
 void Pump::deactivate()
 {
-    qDebug() << "Deactive";
     active = false;
 
 #ifdef __arm__
@@ -132,7 +130,5 @@ void Pump::getPins()
         else if(value == "OUTPUT")
             this->powerPin = pin;
     }
-    qDebug() << this->powerPin;
-    qDebug() << this->PWMPin;
     initializePins();
 }
