@@ -1,11 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "fillpage.h"
-
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    fillPage = new FillPage();
 
     QPixmap pixmap(":/beverages/Beverages/Water.png");
     QIcon ButtonIcon(pixmap);
@@ -58,6 +57,11 @@ void MainWindow::spawnButtons()
 //Pump a beverage
 void MainWindow::pumpBeverage(Beverage *beverage)
 {
-    beverage->mix(DeviceManager::getInstance().getActiveUser()->getBottle()->getSizeML());
-    beverage->mix(500);
+    //beverage->mix(DeviceManager::getInstance().getActiveUser()->getBottle()->getSizeML());
+    //beverage->mix(500);
+
+    fillPage->setBeverage(beverage);
+    fillPage->show();
+    this->hide();
+
 }

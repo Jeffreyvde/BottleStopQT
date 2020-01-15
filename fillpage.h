@@ -3,9 +3,10 @@
 
 #include <QDialog>
 #include <QPixmap>
-#include "mainwindow.h"
+//#include "mainwindow.h"
 #include "RFID/user.h"
 #include "beverage.h"
+#include "devicemanager.h"
 
 namespace Ui {
 class FillPage;
@@ -29,12 +30,12 @@ private slots:
 
 private:
     Ui::FillPage *ui;
-    MainWindow *mainWindow;
+    //MainWindow *mainWindow;
 
     bool favoriteStatusCheck(QString uid, QString bid);
     void changeFavBackground(bool value);
 
-    Beverage *beverage;
+    Beverage* beverage;
 
     QString uid;
     QString bid;

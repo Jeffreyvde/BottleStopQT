@@ -62,7 +62,6 @@ HEADERS += \
         staticscreensaver.h
 
 FORMS += \
-
         fillpage.ui \
         mainwindow.ui\
         staticscreensaver.ui

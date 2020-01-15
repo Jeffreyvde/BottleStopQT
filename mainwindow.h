@@ -9,6 +9,7 @@
 #include "beveragefactory.h"
 #include "beverage.h"
 #include "devicemanager.h"
+#include "fillpage.h"
 
 namespace Ui {
 class MainWindow;
@@ -31,6 +32,7 @@ private:
     void spawnButtons();
 
     void pumpBeverage(Beverage* beverage);
+    FillPage* fillPage;
 
 };
 
