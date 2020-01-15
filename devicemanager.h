@@ -31,6 +31,7 @@ public:
 
     Pump* getPump(int ingredientID);
     Beverage* getBeverage(int beverageIndex);
+    User* getActiveUser();
 
     bool setUser(const QString &value);
 
