@@ -24,18 +24,13 @@ Beverage::Beverage(int id, QString name, QString url, double costPerML)
 void Beverage::getRecipe()
 {
     QJsonArray ingredients = DeviceManager::getInstance().getApi()->getRequestApi("/beverage/" + QString::number(id) + "/recipe").array();
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
     for(int i = 0; i < ingredients.size(); i++){
         QJsonObject mix = ingredients[i].toObject();
 
         MixRatio* mixRatio = new MixRatio(mix["ingredientId"].toInt(), mix["ratio"].toDouble());
         ratios.push_back(mixRatio);
     }
-
-
 }
 
 // Return beverage name
