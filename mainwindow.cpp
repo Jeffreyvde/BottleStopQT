@@ -54,6 +54,6 @@ void MainWindow::spawnButtons()
 //Pump a beverage
 void MainWindow::pumpBeverage(Beverage *beverage)
 {
-    //beverage->mix(DeviceManager::getInstance().getActiveUser()->getBottle()->getSizeML());
-    beverage->mix(500);
+    beverage->mix(DeviceManager::getInstance().getActiveUser()->getBottle()->getSizeML());
+    //beverage->mix(500);
 }
