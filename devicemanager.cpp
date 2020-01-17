@@ -1,4 +1,5 @@
 #include "devicemanager.h"
+ #include <QMessageBox> 
 
 //Initialize the devicemanager. This happens when the singelton is first called.
 DeviceManager::DeviceManager()
@@ -78,6 +79,15 @@ bool DeviceManager::setUser(const QString &value)
     try
     {
         QJsonObject json = api->getRequestApi("/user/bottle/" + value).object();
+        if(json["status"].toDouble() != 0)
+        {
+             qDebug() << "error";
+            QMessageBox msgBox;
+            msgBox.setText("Please buy a bottle stop bottle. Other RFID devices will not work.");
+            msgBox.exec();
+            return false;
+        }
+
          activeUser = new User(json);
          return true;
     }
