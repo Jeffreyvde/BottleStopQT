@@ -28,6 +28,7 @@ void BottleState::handle(QString data)
     addData(data);
     if(serialData.contains(start) && serialData.contains(end))
     {
+        qDebug() << serialData;
         serialData = getSerial(serialData);
         qDebug() << serialData;
         handle();
@@ -59,11 +60,12 @@ void BottleState::connecting()
     QString request = serialData.mid(0, splitIndex);
     QString value = serialData.mid(splitIndex + 1, serialData.length() - splitIndex);
 
+    qDebug() << value;
+
     if(request == idRequest)
     {
         state = Connected;
         DeviceManager::getInstance().getBottleSingals()->placeBottle(value);
-        qDebug() << "Connected";
     }
 
 }
