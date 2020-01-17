@@ -52,6 +52,7 @@ void Pump::pumpAmount(int amountInML)
 
     //Call deactivate after the time which is needed to fill is over.
     float delay = calculateActivationTimeForAmount(amountInML) * multiplierToMilliseconds;
+    qDebug() << delay;
     QTimer::singleShot(delay, this, SLOT(deactivate()));
 }
 
@@ -59,6 +60,7 @@ void Pump::pumpAmount(int amountInML)
 void Pump::activate()
 {
     active = true;
+    qDebug() << "Activate";
 
 #ifdef __arm__
     digitalWrite(powerPin, HIGH);
@@ -70,7 +72,7 @@ void Pump::activate()
 void Pump::deactivate()
 {
     active = false;
-
+    qDebug() << "Deactivate";
 #ifdef __arm__
     digitalWrite(powerPin, LOW);
 #endif
@@ -131,4 +133,5 @@ void Pump::getPins()
             this->powerPin = pin;
     }
     initializePins();
+    qDebug() << powerPin;
 }

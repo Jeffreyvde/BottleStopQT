@@ -8,7 +8,14 @@ BottleSignals::BottleSignals(QObject *parent) : QObject(parent)
 void BottleSignals::placeBottle(QString ID)
 {
    if(DeviceManager::getInstance().setUser(ID))
+   {
+       qDebug() << "Connected";
        emit bottlePlaced();
+   }
+   else
+   {
+       qDebug() << "Failed";
+   }
 }
 
 // Emits the signal for removebottle

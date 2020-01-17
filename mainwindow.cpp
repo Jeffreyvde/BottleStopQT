@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "uimanager.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -26,7 +27,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_waterButton_clicked()
 {
         Beverage* beverage = DeviceManager::getInstance().getBeverage(0);
-        beverage->mix(1000);
+        pumpBeverage(beverage);
 }
 
 // Spawn buttons
@@ -54,6 +55,7 @@ void MainWindow::spawnButtons()
 //Pump a beverage
 void MainWindow::pumpBeverage(Beverage *beverage)
 {
-    beverage->mix(DeviceManager::getInstance().getActiveUser()->getBottle()->getSizeML());
-    //beverage->mix(500);
+    beverage->mix(DeviceManager::getInstance().getActiveUser()->getBottle()->getSizeML() + 200);
+   // beverage->mix(200);
+    UIManager::getInstance().onBottleRemoved();
 }

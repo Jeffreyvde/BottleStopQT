@@ -1,5 +1,6 @@
 #include "beverage.h"
 #include "devicemanager.h"
+#include <QtMath>
 
 // Initialize id, name, cost per milliliter and set recipe
 Beverage::Beverage(QJsonObject beverageData)
@@ -58,12 +59,13 @@ QString Beverage::getUrl() const
 }
 
 //Mix the beverage
-void Beverage::mix(int amountInML)
+void Beverage::mix(float amountInML)
 {
     int amountRatio;
-    for(int i = 0; i < ratios.size(); i++)
+    for(uint i = 0; i < ratios.size(); i++)
     {
-        amountRatio =  amountInML * ratios[i]->ratio;
+        amountRatio =  qRound(amountInML * ratios[i]->ratio);
+        qDebug() << amountRatio;
         ratios[i]->pump->pumpAmount(amountRatio);
     }
 }

@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 
     bottle = new BottleHandler();
     DeviceManager::getInstance().initializeDevice();
-    manager = new UIManager();
+    UIManager::getInstance();
     return a.exec();
 }
 
