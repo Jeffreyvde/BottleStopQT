@@ -19,6 +19,7 @@ signals:
 
 public:
     void write(const QByteArray& data);
+    void onReadData(QString data);
 
 private slots:
     void onReadData();
