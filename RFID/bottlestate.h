@@ -20,6 +20,8 @@ private:
     BottleStates state;
 
     QString serialData;
+    QString command;
+
     void addData(QString data);
 
 

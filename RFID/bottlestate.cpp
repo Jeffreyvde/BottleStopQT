@@ -28,11 +28,20 @@ void BottleState::handle(QString data)
     addData(data);
     if(serialData.contains(start) && serialData.contains(end))
     {
-        qDebug() << serialData;
-        serialData = getSerial(serialData);
-        qDebug() << serialData;
-        handle();
-        serialData = "";
+        do
+        {
+            command = getSerial(serialData);
+            qDebug() << serialData;
+
+            //Adds two for the start and end character
+            serialData.remove(0, command.length() + 2);
+            handle();
+
+            qDebug() << command;
+            qDebug() << serialData;
+            command = "";
+        }
+        while(serialData.contains(end));
     }
 
 }
@@ -51,14 +60,14 @@ void BottleState::addData(QString data)
 // Check if the data received is an ID
 void BottleState::connecting()
 {
-    if(!serialData.contains(split))
+    if(!command.contains(split))
     {
         return;
     }
-    int splitIndex = serialData.indexOf(split);
+    int splitIndex = command.indexOf(split);
 
-    QString request = serialData.mid(0, splitIndex);
-    QString value = serialData.mid(splitIndex + 1, serialData.length() - splitIndex);
+    QString request = command.mid(0, splitIndex);
+    QString value = command.mid(splitIndex + 1, command.length() - splitIndex);
 
     qDebug() << value;
 
@@ -72,7 +81,7 @@ void BottleState::connecting()
 
 // Listen if the received data is an id or cancel event
 void BottleState::listen()
-{   if(serialData == cancelRequest)
+{   if(command == cancelRequest)
     {
         qDebug() << "Cancelling";
         state = Canceling;
