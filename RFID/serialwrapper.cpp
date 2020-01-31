@@ -18,6 +18,12 @@ void SerialWrapper::onReadData()
 #endif
 }
 
+// Debug version of on Read Data
+void SerialWrapper::onReadData(QString data)
+{
+    emit dataReady(data);
+}
+
 // Write to the serial port
 void SerialWrapper::write(const QByteArray& data)
 {
